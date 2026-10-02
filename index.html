@@ -222,7 +222,7 @@
         <a class="hide-sm" href="#ozellikler"><span data-lang="tr">Özellikler</span><span data-lang="en">Features</span></a>
         <a class="hide-sm" href="#nasil"><span data-lang="tr">Nasıl çalışır</span><span data-lang="en">How it works</span></a>
         <a class="hide-sm" href="#gizlilik"><span data-lang="tr">Gizlilik</span><span data-lang="en">Privacy</span></a>
-        <a href="#erken-erisim"><span data-lang="tr">Erken Erişim</span><span data-lang="en">Early Access</span></a>
+        <a href="https://app.provapp.app" rel="noopener"><span data-lang="tr">Beta Uygulaması</span><span data-lang="en">Beta App</span></a>
         <div class="lang" role="group" aria-label="Dil / Language">
           <button type="button" data-set-lang="tr" aria-pressed="true">TR</button>
           <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
@@ -252,18 +252,17 @@
           </span>
         </p>
         <div class="cta">
-          <!-- ERKEN ERİŞİM: bir form (Tally / Google Forms vb.) kullanmak istersen href'i onunla değiştir -->
-          <a class="btn btn-primary" id="erken-erisim"
-             href="mailto:hello@provapp.app?subject=provapp%20Erken%20Eri%C5%9Fim%20%2F%20Early%20Access&amp;body=Merhaba%2C%20provapp%20erken%20eri%C5%9Fim%20listesine%20kat%C4%B1lmak%20istiyorum.%0A%0AAd%20%2F%20Name%3A%0AKullan%C4%B1m%20senaryosu%20%2F%20Use%20case%3A%0A">
-            <span data-lang="tr">Erken Erişim İsteyin</span><span data-lang="en">Join the Waitlist</span>
+          <!-- KAPALI BETA: uygulama app.provapp.app'te; hesap açmak için e-posta doğrulaması gerekir -->
+          <a class="btn btn-primary" id="erken-erisim" href="https://app.provapp.app" rel="noopener">
+            <span data-lang="tr">Beta Uygulamasını Aç</span><span data-lang="en">Open the Beta App</span>
           </a>
-          <a class="btn btn-ghost" href="#ozellikler">
-            <span data-lang="tr">Özellikleri İncele</span><span data-lang="en">Explore Features</span>
+          <a class="btn btn-ghost" href="mailto:hello@provapp.app?subject=provapp%20Beta%20%2F%20Feedback">
+            <span data-lang="tr">Bize Yazın</span><span data-lang="en">Contact Us</span>
           </a>
         </div>
         <p class="hero-note">
-          <span data-lang="tr">Kapalı beta • Yerelde çalışır • Video ve ses cihazından çıkmaz • 5 dilde</span>
-          <span data-lang="en">Private beta • Runs locally • Video and audio never leave your device • In 5 languages</span>
+          <span data-lang="tr">Kapalı beta • Tarayıcıda çalışır, kurulum yok • Kayıt analizden sonra silinir, saklanmaz • 5 dilde</span>
+          <span data-lang="en">Private beta • Runs in the browser, nothing to install • Recordings are deleted after analysis, never stored • In 5 languages</span>
         </p>
       </div>
 
@@ -423,14 +422,14 @@
         <div>
           <ul>
             <li>
-              <strong><span data-lang="tr">Yerel analiz.</span><span data-lang="en">Local analysis.</span></strong>
-              <span data-lang="tr"> Yüz, duruş ve ses çıkarımı MediaPipe Tasks ve librosa ile uygulamanın çalıştığı makinede yapılır.</span>
-              <span data-lang="en"> Face, posture and voice inference run with MediaPipe Tasks and librosa on the machine hosting the app.</span>
+              <strong><span data-lang="tr">Kayıt tarayıcında, analiz şifreli bağlantıyla.</span><span data-lang="en">Recording in your browser, analysis over an encrypted link.</span></strong>
+              <span data-lang="tr"> Kamera ve mikrofon yalnızca senin izninle, kendi cihazında açılır; kayıt HTTPS üzerinden analiz için gönderilir.</span>
+              <span data-lang="en"> Camera and microphone open on your own device only with your permission; the recording is sent over HTTPS for analysis.</span>
             </li>
             <li>
               <strong><span data-lang="tr">Ham medya saklanmaz.</span><span data-lang="en">No raw media retained.</span></strong>
-              <span data-lang="tr"> Geçmişe yalnızca sayısal özetler yazılır; video ve ses dosyaları oturum sonunda silinebilir.</span>
-              <span data-lang="en"> Only numeric summaries are written to history; video and audio files can be deleted at session end.</span>
+              <span data-lang="tr"> Video ve ses, analiz tamamlanır tamamlanmaz sunucudan silinir; geçmişe yalnızca sayısal özetler yazılır.</span>
+              <span data-lang="en"> Video and audio are deleted from the server as soon as the analysis is complete; only numeric summaries are written to history.</span>
             </li>
             <li>
               <strong><span data-lang="tr">Opsiyonel bulut koçu.</span><span data-lang="en">Optional cloud coach.</span></strong>
