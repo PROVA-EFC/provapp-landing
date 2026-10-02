@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="tr" data-ui="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>provapp — prova yap • potansiyelini kalibre et • etkini katla.</title>
+  <meta name="description" content="provapp: multimodal varlık, ses ve beden dili kalibrasyonu. Mülakat, sunum ve zor konuşmalar için gizlilik odaklı prova simülatörü.">
+  <meta name="theme-color" content="#6C240A">
+  <link rel="icon" type="image/svg+xml" href="assets/provapp_mark.svg">
+  <link rel="canonical" href="https://provapp.app/">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://provapp.app/">
+  <meta property="og:title" content="provapp — multimodal prova ve kalibrasyon">
+  <meta property="og:description" content="Prova yap, potansiyelini kalibre et, etkini katla. Ses, duruş, bakış ve içerik analizi tek ekranda.">
+  <meta property="og:image" content="https://provapp.app/img/shot_home.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <style>
+    /* ---------- Design tokens (design_tokens.json v3 ile uyumlu: amber tonları + beyaz) ---------- */
+    :root {
+      --amber-900: #6C240A;
+      --amber-700: #B43C0A;
+      --amber-500: #EA580C;
+      --amber-200: #FED7AA;
+      --amber-100: #FFEDD5;
+      --card: #FFFBF5;
+      --white: #FFFFFF;
+      --ink: #431407;
+      --ink-soft: #7C4A2A;
+      --radius: 18px;
+      --shadow: 0 18px 48px rgba(67, 20, 7, 0.28);
+      --font: "Inter", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--amber-900);
+      color: var(--ink);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--amber-900) 0%, var(--amber-700) 50%, var(--amber-500) 100%);
+      background-attachment: fixed;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .wrap { width: min(1120px, 92vw); margin: 0 auto; }
+
+    /* ---------- Top bar ---------- */
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 0 10px;
+      color: var(--white);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-badge {
+      width: 46px; height: 46px; border-radius: 13px;
+      background: linear-gradient(135deg, var(--amber-700), var(--amber-500));
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      display: grid; place-items: center;
+    }
+    .brand-badge img { width: 34px; height: 34px; }
+    .brand-name { font-size: 1.55rem; font-weight: 700; letter-spacing: -0.5px; line-height: 1; }
+    .brand-sub  { font-size: 0.72rem; opacity: 0.85; margin-top: 3px; }
+
+    .nav-links { display: flex; align-items: center; gap: 22px; font-size: 0.92rem; }
+    .nav-links a { color: var(--white); text-decoration: none; opacity: 0.9; }
+    .nav-links a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+    .lang {
+      display: inline-flex; border: 1px solid rgba(255,255,255,0.45); border-radius: 999px; overflow: hidden;
+    }
+    .lang button {
+      background: transparent; color: var(--white); border: 0; padding: 5px 11px;
+      font: inherit; font-size: 0.8rem; cursor: pointer; opacity: 0.75;
+    }
+    .lang button[aria-pressed="true"] { background: rgba(255,255,255,0.18); opacity: 1; font-weight: 600; }
+    .lang button:focus-visible { outline: 2px solid var(--white); outline-offset: -2px; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      display: grid;
+      /* minmax(0, …) : görselin doğal 2160px genişliği sütunu şişiremesin (grid blowout) */
+      grid-template-columns: minmax(0, 47fr) minmax(0, 53fr);
+      gap: 42px; align-items: center;
+      padding: 54px 0 48px; color: var(--white);
+    }
+    .hero > * { min-width: 0; }
+    .hero h1 {
+      font-size: clamp(2.3rem, 4.6vw, 3.6rem); line-height: 1.04; letter-spacing: -1.2px;
+      margin: 0 0 14px; font-weight: 800;
+    }
+    .hero h1 > span { display: block; }
+    .hero h1 .step-1 { color: var(--white); }
+    .hero h1 .step-2 { color: var(--amber-100); }
+    .hero h1 .step-3 { color: var(--amber-200); }
+    .hero p.lead { font-size: 1.12rem; line-height: 1.55; opacity: 0.94; margin: 0 0 26px; max-width: 540px; }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 22px; border-radius: 12px; font-weight: 600; text-decoration: none; font-size: 0.98rem;
+      border: 1px solid transparent; transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:focus-visible { outline: 3px solid var(--white); outline-offset: 2px; }
+    .btn-primary { background: var(--white); color: var(--amber-700); box-shadow: 0 10px 28px rgba(0,0,0,0.22); }
+    .btn-ghost   { background: rgba(255,255,255,0.10); color: var(--white); border-color: rgba(255,255,255,0.45); }
+    .hero-note { font-size: 0.82rem; opacity: 0.78; margin-top: 14px; }
+
+    .shot {
+      background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 10px; border: 1px solid var(--amber-200);
+      margin: 0; width: 100%; max-width: 100%;
+    }
+    .shot img {
+      width: 100%; height: auto; max-width: 100%;
+      object-fit: contain; border-radius: 12px;
+    }
+    .shot figcaption { font-size: 0.78rem; color: var(--ink-soft); padding: 8px 6px 2px; }
+
+    /* ---------- White windows ---------- */
+    .window {
+      background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 42px clamp(22px, 4vw, 48px); margin: 0 0 28px;
+    }
+    .kicker {
+      font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-700); font-weight: 700;
+      margin: 0 0 8px;
+    }
+    .window h2 { font-size: clamp(1.5rem, 2.6vw, 2.05rem); letter-spacing: -0.6px; margin: 0 0 10px; line-height: 1.15; }
+    .window p.sub { color: var(--ink-soft); margin: 0 0 28px; max-width: 720px; line-height: 1.55; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .grid-3 > *, .grid-2 > *, .gallery > *, .steps > * { min-width: 0; }
+    .card {
+      background: var(--card); border: 1px solid var(--amber-200); border-radius: 14px; padding: 20px 20px 18px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .card h3 { margin: 0; font-size: 1.02rem; letter-spacing: -0.2px; }
+    .card p  { margin: 0; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.5; }
+    .card .metric { font-size: 0.78rem; color: var(--amber-700); font-weight: 600; margin-top: auto; padding-top: 6px; }
+    .idx {
+      width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--amber-700), var(--amber-500)); color: var(--white);
+      font-size: 0.8rem; font-weight: 700; margin-bottom: 4px;
+    }
+
+    /* ---------- Steps ---------- */
+    .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; counter-reset: s; }
+    .step {
+      background: var(--card); border: 1px solid var(--amber-200); border-radius: 14px; padding: 18px;
+    }
+    .step::before {
+      counter-increment: s; content: counter(s, decimal-leading-zero);
+      display: block; font-size: 0.78rem; font-weight: 700; color: var(--amber-700); letter-spacing: 0.08em; margin-bottom: 8px;
+    }
+    .step h3 { margin: 0 0 6px; font-size: 0.98rem; }
+    .step p  { margin: 0; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.5; }
+
+    /* ---------- Gallery ---------- */
+    .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .gallery figure { margin: 0; }
+    .gallery img { width: 100%; height: auto; max-width: 100%; object-fit: contain; border-radius: 12px; border: 1px solid var(--amber-200); }
+    .gallery figcaption { font-size: 0.8rem; color: var(--ink-soft); margin-top: 8px; }
+
+    /* ---------- Privacy ---------- */
+    .privacy ul { margin: 0; padding-left: 18px; color: var(--ink-soft); line-height: 1.65; }
+    .privacy li strong { color: var(--ink); }
+    .ref { font-size: 0.8rem; color: var(--ink-soft); margin-top: 18px; line-height: 1.5; }
+
+    /* ---------- Footer ---------- */
+    footer { color: var(--white); padding: 10px 0 42px; font-size: 0.84rem; opacity: 0.9; }
+    footer .row { display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; align-items: center; }
+    footer a { color: var(--white); }
+
+    /* ---------- i18n ----------
+       Aktif olmayan dil !important ile gizlenir; böylece .hero h1 > span gibi daha özgül
+       display kuralları iki dili aynı anda açamaz. */
+    html[data-ui="tr"] [data-lang="en"],
+    html[data-ui="en"] [data-lang="tr"] { display: none !important; }
+    .b[data-lang] { display: block; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: minmax(0, 1fr); padding-top: 36px; }
+      .grid-3, .gallery, .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-links a.hide-sm { display: none; }
+    }
+    @media (max-width: 600px) {
+      .grid-3, .grid-2, .gallery, .steps { grid-template-columns: minmax(0, 1fr); }
+      .window { padding: 30px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="wrap">
+    <nav class="nav" aria-label="Ana gezinme">
+      <a class="brand" href="#top" aria-label="provapp ana sayfa">
+        <span class="brand-badge" aria-hidden="true"><img src="assets/provapp_mark.svg" alt=""></span>
+        <span>
+          <div class="brand-name">provapp</div>
+          <div class="brand-sub">
+            <span data-lang="tr">multimodal varlık, ses ve beden dili kalibrasyonu</span>
+            <span data-lang="en">multimodal presence, voice &amp; body-language calibration</span>
+          </div>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a class="hide-sm" href="#ozellikler"><span data-lang="tr">Özellikler</span><span data-lang="en">Features</span></a>
+        <a class="hide-sm" href="#nasil"><span data-lang="tr">Nasıl çalışır</span><span data-lang="en">How it works</span></a>
+        <a class="hide-sm" href="#gizlilik"><span data-lang="tr">Gizlilik</span><span data-lang="en">Privacy</span></a>
+        <a href="#erken-erisim"><span data-lang="tr">Erken Erişim</span><span data-lang="en">Early Access</span></a>
+        <div class="lang" role="group" aria-label="Dil / Language">
+          <button type="button" data-set-lang="tr" aria-pressed="true">TR</button>
+          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top" class="wrap">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div>
+        <h1>
+          <span class="step-1"><span data-lang="tr">prova yap</span><span data-lang="en">rehearse</span></span>
+          <span class="step-2"><span data-lang="tr">potansiyelini kalibre et</span><span data-lang="en">calibrate your potential</span></span>
+          <span class="step-3"><span data-lang="tr">etkini katla.</span><span data-lang="en">multiply your impact.</span></span>
+        </h1>
+        <p class="lead">
+          <span class="b" data-lang="tr">
+            Mülakat, sunum, zor bir konuşma ya da ilk buluşma. provapp kamerandan ve mikrofonundan aldığı sinyali
+            ses, bakış, duruş ve içerik boyutlarında ölçer; sana yargılamayan, sayılarla konuşan bir gelişim fırsatı haritası sunar.
+          </span>
+          <span class="b" data-lang="en">
+            Interviews, talks, difficult conversations, first dates. provapp measures the signal from your camera and microphone across
+            voice, gaze, posture and content, and returns a non-judgmental, number-backed map of growth opportunities.
+          </span>
+        </p>
+        <div class="cta">
+          <!-- ERKEN ERİŞİM: bir form (Tally / Google Forms vb.) kullanmak istersen href'i onunla değiştir -->
+          <a class="btn btn-primary" id="erken-erisim"
+             href="mailto:hello@provapp.app?subject=provapp%20Erken%20Eri%C5%9Fim%20%2F%20Early%20Access&amp;body=Merhaba%2C%20provapp%20erken%20eri%C5%9Fim%20listesine%20kat%C4%B1lmak%20istiyorum.%0A%0AAd%20%2F%20Name%3A%0AKullan%C4%B1m%20senaryosu%20%2F%20Use%20case%3A%0A">
+            <span data-lang="tr">Erken Erişim İsteyin</span><span data-lang="en">Join the Waitlist</span>
+          </a>
+          <a class="btn btn-ghost" href="#ozellikler">
+            <span data-lang="tr">Özellikleri İncele</span><span data-lang="en">Explore Features</span>
+          </a>
+        </div>
+        <p class="hero-note">
+          <span data-lang="tr">Kapalı beta • Yerelde çalışır • Video ve ses cihazından çıkmaz • TR / EN / FR / DE / ES</span>
+          <span data-lang="en">Private beta • Runs locally • Video and audio never leave your device • TR / EN / FR / DE / ES</span>
+        </p>
+      </div>
+
+      <figure class="shot">
+        <img src="img/shot_home.png" width="2160" height="1350"
+             alt="provapp ana ekranı: amber zemin üzerinde beyaz kontrol konsolu, senaryo seçimi ve canlı prova başlatma düğmesi">
+        <figcaption>
+          <span data-lang="tr">Kontrol konsolu: senaryo, sahne ve odak seçimi tek ekranda.</span>
+          <span data-lang="en">Control console: scenario, scene and focus selection on one screen.</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+    <section id="ozellikler" class="window">
+      <p class="kicker"><span data-lang="tr">Ne ölçer</span><span data-lang="en">What it measures</span></p>
+      <h2>
+        <span data-lang="tr">Dört kanal, tek kalibrasyon raporu</span>
+        <span data-lang="en">Four channels, one calibration report</span>
+      </h2>
+      <p class="sub">
+        <span class="b" data-lang="tr">Her değer gerçek kayıttan türetilir; her fırsat penceresi ölçülen değer, hedef aralık, somut aksiyon ve akademik referansla birlikte sunulur.</span>
+        <span class="b" data-lang="en">Every value is derived from the actual recording; every opportunity window comes with the measured value, a target range, a concrete action and an academic reference.</span>
+      </p>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="idx" aria-hidden="true">1</div>
+          <h3><span data-lang="tr">Ses ve Prozodi</span><span data-lang="en">Voice &amp; Prosody</span></h3>
+          <p>
+            <span data-lang="tr">Konuşma hızı, duraklama oranı, perde aralığı ve enerji dengesi. Dolgu sözcükler ve monotonluk tespiti.</span>
+            <span data-lang="en">Speaking rate, pause ratio, pitch range and energy balance. Filler words and monotony detection.</span>
+          </p>
+          <div class="metric">WPM • pause % • F0 range • RMS</div>
+        </article>
+        <article class="card">
+          <div class="idx" aria-hidden="true">2</div>
+          <h3><span data-lang="tr">Bakış ve Yüz</span><span data-lang="en">Gaze &amp; Face</span></h3>
+          <p>
+            <span data-lang="tr">Göz teması süresi, kırpma sıklığı, baş yönelimi ve mikro ifadeler. MediaPipe Tasks ile cihaz üzerinde.</span>
+            <span data-lang="en">Eye-contact duration, blink rate, head orientation and micro-expressions. On-device via MediaPipe Tasks.</span>
+          </p>
+          <div class="metric">eye-contact % • blink/min • yaw/pitch</div>
+        </article>
+        <article class="card">
+          <div class="idx" aria-hidden="true">3</div>
+          <h3><span data-lang="tr">Duruş ve Jest</span><span data-lang="en">Posture &amp; Gesture</span></h3>
+          <p>
+            <span data-lang="tr">Omuz simetrisi, gövde açıklığı, el hareket yoğunluğu ve sahne kullanımı. Sahne/kürsü senaryosuna göre normalize.</span>
+            <span data-lang="en">Shoulder symmetry, torso openness, hand-gesture density and stage usage. Normalised to the chosen stage scenario.</span>
+          </p>
+          <div class="metric">symmetry • openness • gesture rate</div>
+        </article>
+        <article class="card">
+          <div class="idx" aria-hidden="true">4</div>
+          <h3><span data-lang="tr">İçerik ve Yapı</span><span data-lang="en">Content &amp; Structure</span></h3>
+          <p>
+            <span data-lang="tr">STAR yöntemi uyumu, mesaj netliği, hedef süreye sadakat. Teleprompter ile kendi metnini prova et.</span>
+            <span data-lang="en">STAR-method coverage, message clarity, adherence to target duration. Rehearse your own script with the teleprompter.</span>
+          </p>
+          <div class="metric">STAR coverage • clarity • timing</div>
+        </article>
+        <article class="card">
+          <div class="idx" aria-hidden="true">5</div>
+          <h3><span data-lang="tr">Karşındaki ve Sahne</span><span data-lang="en">Counterpart &amp; Scene</span></h3>
+          <p>
+            <span data-lang="tr">Kayıt sırasında kendi yüzün yerine seçtiğin sahneyi görürsün: mülakat odası, panel, kafe, auditoryum, online çağrı.</span>
+            <span data-lang="en">During recording you see the scene you chose instead of your own face: interview room, panel, café, auditorium, online call.</span>
+          </p>
+          <div class="metric">interview • business • romantic • social • public</div>
+        </article>
+        <article class="card">
+          <div class="idx" aria-hidden="true">6</div>
+          <h3><span data-lang="tr">Gelişim Zaman Çizelgesi</span><span data-lang="en">Progress Timeline</span></h3>
+          <p>
+            <span data-lang="tr">Her provanın özeti yerel geçmişe yazılır; trend grafikleri ve PDF rapor ile ilerlemeni izle.</span>
+            <span data-lang="en">Each rehearsal is summarised to local history; track your trend with charts and a PDF report.</span>
+          </p>
+          <div class="metric">history • trend • PDF</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= HOW IT WORKS ================= -->
+    <section id="nasil" class="window">
+      <p class="kicker"><span data-lang="tr">Nasıl çalışır</span><span data-lang="en">How it works</span></p>
+      <h2>
+        <span data-lang="tr">Dört adımda bir prova</span>
+        <span data-lang="en">A rehearsal in four steps</span>
+      </h2>
+      <p class="sub">
+        <span class="b" data-lang="tr">İlk kullanımda kısa bir tanışma provası seni yönlendirir. Sonrasında her oturum bir dakikadan kısa sürede başlar.</span>
+        <span class="b" data-lang="en">A short onboarding rehearsal guides first-time users. After that every session starts in under a minute.</span>
+      </p>
+      <div class="steps">
+        <div class="step">
+          <h3><span data-lang="tr">Senaryonu seç</span><span data-lang="en">Pick a scenario</span></h3>
+          <p><span data-lang="tr">Mülakat, iş sunumu, topluluk önü konuşma, sosyal veya romantik bağlam; sahne ve odak alanını belirle.</span>
+             <span data-lang="en">Interview, business pitch, public speaking, social or romantic context; set the scene and focus area.</span></p>
+        </div>
+        <div class="step">
+          <h3><span data-lang="tr">Kaydı başlat</span><span data-lang="en">Start recording</span></h3>
+          <p><span data-lang="tr">Kamera ve mikrofon tarayıcında açılır. İstersen teleprompter metnin kayan yazı olarak eşlik eder.</span>
+             <span data-lang="en">Camera and microphone open in your browser. Optionally the teleprompter scrolls your script alongside.</span></p>
+        </div>
+        <div class="step">
+          <h3><span data-lang="tr">Analizi izle</span><span data-lang="en">Watch the analysis</span></h3>
+          <p><span data-lang="tr">Kayıt biter bitmez video, anahtar kareler ve ölçümler aynı ekranda; her metrik hedef aralığıyla birlikte.</span>
+             <span data-lang="en">As soon as recording ends: video, key frames and measurements on one screen, each metric with its target range.</span></p>
+        </div>
+        <div class="step">
+          <h3><span data-lang="tr">Fırsat penceresini uygula</span><span data-lang="en">Apply the opportunity</span></h3>
+          <p><span data-lang="tr">Somut aksiyonları al, sesli değerlendirmeyi dinle, raporu indir. Bir sonraki provada farkı ölç.</span>
+             <span data-lang="en">Take the concrete actions, listen to the spoken evaluation, download the report. Measure the difference next time.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GALLERY ================= -->
+    <section class="window">
+      <p class="kicker"><span data-lang="tr">Ekranlar</span><span data-lang="en">Screens</span></p>
+      <h2>
+        <span data-lang="tr">Kayıttan rapora</span>
+        <span data-lang="en">From recording to report</span>
+      </h2>
+      <p class="sub">
+        <span class="b" data-lang="tr">Dizüstü ekranına sığan, kaydırma gerektirmeyen yerleşim. Tüm arayüz beş dilde.</span>
+        <span class="b" data-lang="en">A layout that fits a laptop screen without scrolling. The whole interface in five languages.</span>
+      </p>
+      <div class="gallery">
+        <figure>
+          <img src="img/shot_record.png" width="2160" height="1350" loading="lazy"
+               alt="Kayıt ekranı: seçilen karşı taraf sahnesi ve teleprompter metni">
+          <figcaption><span data-lang="tr">Kayıt: karşı taraf sahnesi ve teleprompter</span><span data-lang="en">Recording: counterpart scene and teleprompter</span></figcaption>
+        </figure>
+        <figure>
+          <img src="img/shot_eval_full.png" width="2160" height="1350" loading="lazy"
+               alt="Değerlendirme ekranı: video, anahtar kare şeridi ve fırsat pencereleri">
+          <figcaption><span data-lang="tr">Değerlendirme: video, anahtar kareler, fırsat pencereleri</span><span data-lang="en">Evaluation: video, key frames, opportunity windows</span></figcaption>
+        </figure>
+        <figure>
+          <img src="img/shot_timeline.png" width="2160" height="1350" loading="lazy"
+               alt="Gelişim zaman çizelgesi: geçmiş provaların trend grafikleri">
+          <figcaption><span data-lang="tr">Zaman çizelgesi: provalar arası trend</span><span data-lang="en">Timeline: trend across rehearsals</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= PRIVACY ================= -->
+    <section id="gizlilik" class="window privacy">
+      <p class="kicker"><span data-lang="tr">Gizlilik modeli</span><span data-lang="en">Privacy model</span></p>
+      <h2>
+        <span data-lang="tr">Veri cihazında kalır</span>
+        <span data-lang="en">Your data stays on your device</span>
+      </h2>
+      <div class="grid-2">
+        <div>
+          <ul>
+            <li>
+              <strong><span data-lang="tr">Yerel analiz.</span><span data-lang="en">Local analysis.</span></strong>
+              <span data-lang="tr"> Yüz, duruş ve ses çıkarımı MediaPipe Tasks ve librosa ile uygulamanın çalıştığı makinede yapılır.</span>
+              <span data-lang="en"> Face, posture and voice inference run with MediaPipe Tasks and librosa on the machine hosting the app.</span>
+            </li>
+            <li>
+              <strong><span data-lang="tr">Ham medya saklanmaz.</span><span data-lang="en">No raw media retained.</span></strong>
+              <span data-lang="tr"> Geçmişe yalnızca sayısal özetler yazılır; video ve ses dosyaları oturum sonunda silinebilir.</span>
+              <span data-lang="en"> Only numeric summaries are written to history; video and audio files can be deleted at session end.</span>
+            </li>
+            <li>
+              <strong><span data-lang="tr">Opsiyonel bulut koçu.</span><span data-lang="en">Optional cloud coach.</span></strong>
+              <span data-lang="tr"> Üretken koç yalnızca sen anahtar tanımladığında ve yalnızca metin özetiyle çalışır.</span>
+              <span data-lang="en"> The generative coach runs only when you provide a key, and only on a text summary.</span>
+            </li>
+            <li>
+              <strong><span data-lang="tr">Yargısız dil.</span><span data-lang="en">Non-judgmental language.</span></strong>
+              <span data-lang="tr"> Hata değil fırsat penceresi; her öneri ölçüm, hedef ve referansla gerekçelendirilir.</span>
+              <span data-lang="en"> Opportunity windows instead of faults; every suggestion is justified with a measurement, a target and a reference.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span data-lang="tr">Uyum ve belgeler</span><span data-lang="en">Compliance &amp; documents</span></h3>
+          <p>
+            <span data-lang="tr">EU AI Act ve GDPR ilkeleri gözetilerek tasarlandı. Gizlilik politikası, yasal uyarı ve fikri mülkiyet belgeleri erken erişim katılımcılarıyla paylaşılır.</span>
+            <span data-lang="en">Designed with EU AI Act and GDPR principles in mind. The privacy policy, legal disclaimer and IP documents are shared with early-access participants.</span>
+          </p>
+          <p>
+            <a href="mailto:hello@provapp.app?subject=provapp%20Gizlilik%20%2F%20Privacy">
+              <span data-lang="tr">Belgeleri talep et</span><span data-lang="en">Request the documents</span>
+            </a>
+          </p>
+          <p class="ref">
+            <span data-lang="tr">provapp bir eğitim ve prova aracıdır; klinik, hukuki veya işe alım kararı için tek başına kullanılmamalıdır.</span>
+            <span data-lang="en">provapp is a training and rehearsal tool; it must not be used alone for clinical, legal or hiring decisions.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="row">
+      <div>
+        © <span id="year">2026</span> provapp · PROVA-EFC ·
+        <span data-lang="tr">Tüm hakları saklıdır.</span><span data-lang="en">All rights reserved.</span>
+      </div>
+      <div>
+        <a href="#gizlilik"><span data-lang="tr">Gizlilik</span><span data-lang="en">Privacy</span></a> ·
+        <a href="mailto:hello@provapp.app">hello@provapp.app</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var stored = null;
+      try { stored = localStorage.getItem('provapp-lang'); } catch (e) {}
+      var initial = stored || ((navigator.language || 'tr').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en');
+
+      function apply(lang) {
+        root.setAttribute('data-ui', lang);
+        root.setAttribute('lang', lang);
+        document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
+        });
+        try { localStorage.setItem('provapp-lang', lang); } catch (e) {}
+      }
+      apply(initial);
+
+      document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+        b.addEventListener('click', function () { apply(b.getAttribute('data-set-lang')); });
+      });
+      document.getElementById('year').textContent = String(new Date().getFullYear());
+    })();
+  </script>
+</body>
+</html>

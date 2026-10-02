@@ -1,0 +1,14 @@
+<svg width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="champagnePhiMark" x1="30" y1="30" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="45%" stop-color="#FFFDF7"/>
+      <stop offset="80%" stop-color="#FEF3C7"/>
+      <stop offset="100%" stop-color="#FDE68A"/>
+    </linearGradient>
+  </defs>
+  <path d="M 10 74 C 42 36, 98 36, 130 74 C 96 42, 44 42, 10 74 Z" fill="url(#champagnePhiMark)"/>
+  <path d="M 10 94 C 42 132, 98 132, 130 94 C 96 126, 44 126, 10 94 Z" fill="url(#champagnePhiMark)"/>
+  <line x1="70" y1="50" x2="70" y2="118" stroke="url(#champagnePhiMark)" stroke-width="6.5" stroke-linecap="round"/>
+  <circle cx="70" cy="84" r="21" stroke="url(#champagnePhiMark)" stroke-width="6" fill="none"/>
+</svg>
