@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" data-ui="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Methodology · provapp</title>
+  <meta name="description" content="How provapp measures gaze, facial action units, posture, voice and content, which target ranges it uses and which behavioural-science references ground them.">
+  <meta name="theme-color" content="#6C240A">
+  <link rel="icon" type="image/svg+xml" href="assets/provapp_mark.svg">
+  <link rel="canonical" href="https://provapp.app/methodology.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://provapp.app/methodology.html">
+  <meta property="og:title" content="provapp — Science &amp; Methodology">
+  <meta property="og:image" content="https://provapp.app/img/shot_eval_full.png">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <header class="wrap" id="site-header"></header>
+  <main class="wrap" id="site-main">
+    <noscript><section class="window"><p>This page needs JavaScript to switch languages. provapp derives every metric from the actual recording using MediaPipe landmarks and audio analysis, and grounds target ranges in behavioural-science literature (Ekman &amp; Friesen, Argyle &amp; Cook, Navarro, Kendon, Goldman-Eisler, Rodero).</p></section></noscript>
+  </main>
+  <footer class="wrap" id="site-footer"></footer>
+
+  <script>
+  var REFS = [
+    "<em>Argyle, M., &amp; Cook, M. (1976).</em> Gaze and Mutual Gaze. Cambridge University Press.",
+    "<em>Doherty-Sneddon, G., &amp; Phelps, F. G. (2005).</em> Gaze aversion: A response to cognitive or social difficulty? Memory &amp; Cognition, 33(4), 727–733.",
+    "<em>Ekman, P., &amp; Friesen, W. V. (1978).</em> Facial Action Coding System (FACS). Consulting Psychologists Press.",
+    "<em>Ekman, P., Davidson, R. J., &amp; Friesen, W. V. (1990).</em> The Duchenne smile: Emotional expression and brain physiology II. Journal of Personality and Social Psychology, 58(2), 342–353.",
+    "<em>Navarro, J. (2008).</em> What Every BODY Is Saying. HarperCollins. (pacifying / adaptor behaviours)",
+    "<em>Carney, D. R., Cuddy, A. J. C., &amp; Yap, A. J. (2010).</em> Power posing: Brief nonverbal displays affect neuroendocrine levels and risk tolerance. Psychological Science, 21(10), 1363–1368.",
+    "<em>Mehrabian, A. (1971).</em> Silent Messages. Wadsworth.",
+    "<em>Knapp, M. L., &amp; Hall, J. A. (2010).</em> Nonverbal Communication in Human Interaction (7th ed.). Wadsworth.",
+    "<em>Kendon, A. (2004).</em> Gesture: Visible Action as Utterance. Cambridge University Press.",
+    "<em>McNeill, D. (1992).</em> Hand and Mind: What Gestures Reveal about Thought. University of Chicago Press.",
+    "<em>Goldman-Eisler, F. (1968).</em> Psycholinguistics: Experiments in Spontaneous Speech. Academic Press.",
+    "<em>Scherer, K. R. (2003).</em> Vocal communication of emotion: A review of research paradigms. Speech Communication, 40(1–2), 227–256.",
+    "<em>Rodero, E. (2012).</em> A comparative analysis of speech rate and perception in radio bulletins. Text &amp; Talk, 32(3), 391–411.",
+    "<em>Pennebaker, J. W. (2011).</em> The Secret Life of Pronouns. Bloomsbury.",
+    "<em>Lugaresi, C., et al. (2019).</em> MediaPipe: A Framework for Building Perception Pipelines. arXiv:1906.08172."
+  ];
+
+  window.PAGE = {
+    slug: "methodology",
+
+    tr: {
+      kicker: "Bilimsel metodoloji",
+      title: "Puanlar rastgele değil: provapp nasıl ölçer?",
+      lead: "Raporunuzdaki her sayı, kaydınızdan kare kare ve saniye saniye türetilir; her hedef aralık davranış bilimi literatüründen gelir. Bu sayfa ölçüm zincirini, eşikleri ve sınırlarımızı açıklar.",
+      sections: [
+        { kicker: "Ölçüm zinciri", h: "Kayıttan karta beş adım",
+          blocks: [
+            { type: "ol", items: [
+              "<strong>Kayıt tarayıcıda.</strong> Kamera ve mikrofon yalnızca sizin izninizle, kendi cihazınızda açılır. Kayıt şifreli bağlantı (HTTPS) üzerinden analiz için gönderilir.",
+              "<strong>Görsel analiz.</strong> MediaPipe Tasks (Face, Hand ve Pose Landmarker) her karede 478 yüz noktası, 52 yüz kası katsayısı (blendshape), 21 el noktası ve 33 vücut noktası çıkarır. Bakış yönü, baş açıları, omuz hattı, el konumu ve yüze dokunma buradan hesaplanır.",
+              "<strong>Ses analizi.</strong> Ses dalgasından temel frekans (F0) konturu, enerji (dBFS), sessizlik segmentleri ve dolgu sesler ölçülür; yerel konuşma tanıma modeli transkript, kelime/dk ve STAR yapı ipuçlarını ekler.",
+              "<strong>Kural tabanlı koç.</strong> Her ölçüm, bağlama göre (mülakat, sunum, online toplantı) belirlenmiş hedef aralığıyla karşılaştırılır ve bir karta dönüşür: ölçüm, fırsat, eylem, referans.",
+              "<strong>Silme.</strong> Analiz bittiğinde video ve ses silinir; geçmişe yalnızca sayısal özetler yazılır."
+            ] }
+          ] },
+        { kicker: "Kanallar ve eşikler", h: "Ne ölçülür, hangi aralık hedeflenir",
+          blocks: [
+            { type: "p", text: "Aşağıdaki hedefler profesyonel video ve sunum bağlamı için kalibre edilmiştir; romantik veya sosyal senaryolarda bazı aralıklar yumuşatılır. Hedef bir sınır değil, literatürde etkili iletişimle ilişkilendirilen banttır." },
+            { type: "table", head: ["Ölçüm", "Nasıl hesaplanır", "Hedef bant", "Dayanak"], rows: [
+              ["Göz teması (lens odağı)", "İris ve baş yöneliminden lense bakılan kare oranı", "Oturum %60–80; tek kare ≥ %75", "Argyle &amp; Cook (1976); Doherty-Sneddon &amp; Phelps (2005)"],
+              ["Baş dönüşü ve eğimi", "Yüz noktalarından yaw / pitch / roll", "Dönüş ≤ 12°, eğim ≤ 8°", "Argyle &amp; Cook (1976); Mehrabian (1971)"],
+              ["Omuz hattı", "Pose noktalarından omuz açısı", "≤ 5°, açık ve simetrik", "Carney, Cuddy &amp; Yap (2010); Knapp &amp; Hall (2010)"],
+              ["Tebessüm AU12 ve yanak AU6", "Blendshape katsayıları (FACS aksiyon üniteleri)", "Açılış/kapanışta AU12 ≥ %30 ve AU6 ≥ %20 (Duchenne)", "Ekman &amp; Friesen (1978); Ekman, Davidson &amp; Friesen (1990)"],
+              ["Yüze dokunma", "El noktalarının yüz bölgeleriyle kesişimi (çene, boyun, burun…)", "0 (yatıştırıcı davranış sinyali)", "Navarro (2008)"],
+              ["El görünürlüğü ve seviyesi", "El noktaları + kadraj konumu", "Görünür, göğüs hizası", "Kendon (2004); McNeill (1992)"],
+              ["Konuşma hızı", "Transkriptten kelime/dk ve dalgalanma (CV)", "130–160 kelime/dk", "Rodero (2012)"],
+              ["Duraklama ve dolgu sesler", "Sessizlik segmentleri; dolgu ses tespiti", "1–2 sn dilsiz duraklama; dolgu mümkün olduğunca az", "Goldman-Eisler (1968)"],
+              ["Perde aralığı ve monotonluk", "F0 konturu, yarım ton (st) aralığı", "Geniş aralık, düşük monotonluk skoru", "Scherer (2003)"],
+              ["Ses seviyesi", "RMS dBFS → 0–100 ölçeği, dalgalanma ±dB", "Kararlı seviye, düşük dalgalanma", "Rodero (2012)"],
+              ["STAR yapısı", "Transkriptte Durum / Görev / Eylem / Sonuç ipuçları", "Dört öğenin tamamı", "Yapılandırılmış mülakat yaklaşımı"]
+            ] }
+          ] },
+        { kicker: "Kartlar", h: "Bir gelişim kartı nasıl oluşur",
+          blocks: [
+            { type: "p", text: "Her kart dört satırdan oluşur: <strong>Ölçüm</strong> (kayıttan gelen gerçek değer), <strong>Fırsat</strong> (bu değerin iletişimde nasıl okunduğu), <strong>Eylem</strong> (bir sonraki provada uygulanabilir somut adım) ve <strong>Referans</strong>. Bir ölçüm yapılamadıysa o kart hiç üretilmez." },
+            { type: "cards", cols: 3, items: [
+              { h: "Güçlü yan", p: "Değer hedef bandın içinde. Korunması gereken davranış ölçümüyle birlikte gösterilir." , metric: "yeşil" },
+              { h: "Fırsat penceresi", p: "Değer hedef bandın dışında ama etkisi sınırlı. Küçük bir ayarla kapanabilecek fark.", metric: "amber" },
+              { h: "Öncelikli fırsat", p: "Etkisi en yüksek tek kalem. Raporda en üstte yer alır; koçun sesli yorumu da buradan başlar.", metric: "kırmızı" }
+            ] }
+          ] },
+        { kicker: "Anahtar kareler", h: "Videodan seçilen üç an",
+          blocks: [
+            { type: "p", text: "Kayıt bittiğinde algoritma, kare başına ölçümlere bakarak üç anı seçer ve her birine o karede gerçekten ölçülen değerlerle açıklama kartları ekler:" },
+            { type: "ul", items: [
+              "<strong>En iyi göz teması:</strong> lens odağının en yüksek, baş dönüşünün en düşük olduğu kare. Neyi tekrarlamanız gerektiğini gösterir.",
+              "<strong>Kritik sapma:</strong> bakışın koptuğu, yüze dokunulan veya başın en çok döndüğü kare. Nerede, ne zaman ve ne kadar olduğunu somutlaştırır.",
+              "<strong>En sıcak ifade + duruş ve kıyafet:</strong> AU6+AU12'nin en yüksek olduğu kare; omuz hattı, el konumu ve senaryo kartelasına uyum bu karede değerlendirilir."
+            ] }
+          ] },
+        { kicker: "Kaynakça", h: "Dayandığımız çalışmalar", blocks: [ { type: "refs", items: REFS } ] },
+        { kicker: "Sınırlar", h: "Neyi iddia etmiyoruz",
+          blocks: [
+            { type: "ul", items: [
+              "Tek kameradan 2B tahmin yapılır; derinlik ve ışık koşulları açı ölçümlerini birkaç derece etkileyebilir.",
+              "Yüz kası katsayıları (blendshape) duygu değil kas aktivasyonu ölçer; provapp duygu veya niyet atfetmez.",
+              "Hedef bantlar Batı iş kültürü literatüründen gelir; göz teması ve jest normları kültürler arasında değişir.",
+              "Duruş bulguları 'açıklık ve okunabilirlik' sinyali olarak yorumlanır; hormonal veya kişilik düzeyinde bir iddia içermez.",
+              "provapp bir eğitim ve prova aracıdır; klinik, hukuki veya işe alım kararı için tek başına kullanılmamalıdır."
+            ] }
+          ] }
+      ]
+    },
+
+    en: {
+      kicker: "Science &amp; methodology",
+      title: "Scores are not random: how provapp measures",
+      lead: "Every number in your report is derived frame by frame and second by second from your recording; every target range comes from the behavioural-science literature. This page explains the measurement chain, the thresholds and our limits.",
+      sections: [
+        { kicker: "Measurement chain", h: "Five steps from recording to card",
+          blocks: [
+            { type: "ol", items: [
+              "<strong>Recording in the browser.</strong> Camera and microphone open on your own device, only with your permission. The recording is sent over an encrypted connection (HTTPS) for analysis.",
+              "<strong>Visual analysis.</strong> MediaPipe Tasks (Face, Hand and Pose Landmarker) extracts 478 facial landmarks, 52 facial-muscle coefficients (blendshapes), 21 hand points and 33 body points per frame. Gaze direction, head angles, shoulder line, hand position and face touching are computed from them.",
+              "<strong>Audio analysis.</strong> Fundamental-frequency (F0) contour, energy (dBFS), silence segments and filler sounds are measured from the waveform; an on-device speech-recognition model adds the transcript, words per minute and STAR-structure cues.",
+              "<strong>Rule-based coach.</strong> Each measurement is compared with a context-specific target band (interview, presentation, online meeting) and turned into a card: measurement, opportunity, action, reference.",
+              "<strong>Deletion.</strong> When the analysis is complete, video and audio are deleted; only numeric summaries are written to history."
+            ] }
+          ] },
+        { kicker: "Channels and thresholds", h: "What is measured, which band is targeted",
+          blocks: [
+            { type: "p", text: "The targets below are calibrated for professional video and presentation contexts; some bands are relaxed in romantic or social scenarios. A target is not a pass mark but the band the literature associates with effective communication." },
+            { type: "table", head: ["Measurement", "How it is computed", "Target band", "Grounding"], rows: [
+              ["Eye contact (lens focus)", "Share of frames looking at the lens, from iris and head orientation", "Session 60–80%; single frame ≥ 75%", "Argyle &amp; Cook (1976); Doherty-Sneddon &amp; Phelps (2005)"],
+              ["Head turn and tilt", "Yaw / pitch / roll from facial landmarks", "Turn ≤ 12°, tilt ≤ 8°", "Argyle &amp; Cook (1976); Mehrabian (1971)"],
+              ["Shoulder line", "Shoulder angle from pose landmarks", "≤ 5°, open and symmetric", "Carney, Cuddy &amp; Yap (2010); Knapp &amp; Hall (2010)"],
+              ["Smile AU12 and cheek AU6", "Blendshape coefficients (FACS action units)", "At opening/closing AU12 ≥ 30% and AU6 ≥ 20% (Duchenne)", "Ekman &amp; Friesen (1978); Ekman, Davidson &amp; Friesen (1990)"],
+              ["Face touching", "Intersection of hand landmarks with face zones (chin, neck, nose…)", "0 (pacifying-behaviour signal)", "Navarro (2008)"],
+              ["Hand visibility and level", "Hand landmarks + position in frame", "Visible, chest level", "Kendon (2004); McNeill (1992)"],
+              ["Speaking rate", "Words per minute and variation (CV) from the transcript", "130–160 wpm", "Rodero (2012)"],
+              ["Pauses and fillers", "Silence segments; filler-sound detection", "1–2 s silent pauses; as few fillers as possible", "Goldman-Eisler (1968)"],
+              ["Pitch range and monotony", "F0 contour, range in semitones", "Wide range, low monotony score", "Scherer (2003)"],
+              ["Volume", "RMS dBFS → 0–100 scale, variation ±dB", "Stable level, low variation", "Rodero (2012)"],
+              ["STAR structure", "Situation / Task / Action / Result cues in the transcript", "All four elements", "Structured-interview practice"]
+            ] }
+          ] },
+        { kicker: "Cards", h: "How a growth card is formed",
+          blocks: [
+            { type: "p", text: "Every card has four lines: <strong>Measurement</strong> (the real value from the recording), <strong>Opportunity</strong> (how that value reads in communication), <strong>Action</strong> (a concrete step for the next rehearsal) and <strong>Reference</strong>. If a measurement could not be made, the card is not generated at all." },
+            { type: "cards", cols: 3, items: [
+              { h: "Strength", p: "The value is inside the target band. The behaviour worth keeping is shown together with its measurement.", metric: "green" },
+              { h: "Opportunity window", p: "Outside the band but with limited impact. A gap that a small adjustment can close.", metric: "amber" },
+              { h: "Priority opportunity", p: "The single item with the highest impact. It leads the report and the spoken coach commentary starts there.", metric: "red" }
+            ] }
+          ] },
+        { kicker: "Key frames", h: "Three moments selected from the video",
+          blocks: [
+            { type: "p", text: "After recording, the algorithm scans the per-frame measurements and selects three moments, attaching explanation cards built only from values actually measured in that frame:" },
+            { type: "ul", items: [
+              "<strong>Best eye contact:</strong> the frame with the highest lens focus and lowest head turn. It shows what to repeat.",
+              "<strong>Critical deviation:</strong> the frame where gaze broke, the face was touched or the head turned most. It makes where, when and how much concrete.",
+              "<strong>Warmest expression + posture and attire:</strong> the frame with the highest AU6+AU12; shoulder line, hand position and fit with the scenario palette are assessed there."
+            ] }
+          ] },
+        { kicker: "References", h: "The work we build on", blocks: [ { type: "refs", items: REFS } ] },
+        { kicker: "Limits", h: "What we do not claim",
+          blocks: [
+            { type: "ul", items: [
+              "Estimation is 2-D from a single camera; depth and lighting can shift angle measurements by a few degrees.",
+              "Blendshape coefficients measure muscle activation, not emotion; provapp does not attribute feelings or intent.",
+              "Target bands come from Western business-communication literature; eye-contact and gesture norms vary across cultures.",
+              "Posture findings are interpreted as openness and readability signals; no hormonal or personality-level claim is made.",
+              "provapp is a training and rehearsal tool; it must not be used alone for clinical, legal or hiring decisions."
+            ] }
+          ] }
+      ]
+    },
+
+    de: {
+      kicker: "Wissenschaft &amp; Methodik",
+      title: "Keine Zufallswerte: So misst provapp",
+      lead: "Jede Zahl in Ihrem Bericht wird Bild für Bild und Sekunde für Sekunde aus Ihrer Aufnahme abgeleitet; jeder Zielbereich stammt aus der verhaltenswissenschaftlichen Literatur. Diese Seite erklärt Messkette, Schwellenwerte und Grenzen.",
+      sections: [
+        { kicker: "Messkette", h: "Fünf Schritte von der Aufnahme zur Karte",
+          blocks: [
+            { type: "ol", items: [
+              "<strong>Aufnahme im Browser.</strong> Kamera und Mikrofon öffnen sich nur mit Ihrer Erlaubnis auf Ihrem eigenen Gerät. Die Aufnahme wird verschlüsselt (HTTPS) zur Analyse übertragen.",
+              "<strong>Visuelle Analyse.</strong> MediaPipe Tasks (Face, Hand und Pose Landmarker) extrahiert pro Bild 478 Gesichtspunkte, 52 Gesichtsmuskel-Koeffizienten (Blendshapes), 21 Handpunkte und 33 Körperpunkte. Daraus werden Blickrichtung, Kopfwinkel, Schulterlinie, Handposition und Gesichtsberührungen berechnet.",
+              "<strong>Audioanalyse.</strong> Aus der Tonspur werden Grundfrequenzverlauf (F0), Energie (dBFS), Stillephasen und Füllwörter gemessen; ein lokales Spracherkennungsmodell ergänzt Transkript, Wörter pro Minute und STAR-Hinweise.",
+              "<strong>Regelbasierter Coach.</strong> Jede Messung wird mit einem kontextspezifischen Zielbereich (Interview, Präsentation, Online-Meeting) verglichen und zu einer Karte: Messung, Chance, Handlung, Referenz.",
+              "<strong>Löschung.</strong> Nach Abschluss der Analyse werden Video und Audio gelöscht; in die Historie gelangen nur numerische Zusammenfassungen."
+            ] }
+          ] },
+        { kicker: "Kanäle und Schwellen", h: "Was gemessen wird, welcher Bereich angestrebt wird",
+          blocks: [
+            { type: "p", text: "Die folgenden Ziele sind für professionelle Video- und Präsentationskontexte kalibriert; in romantischen oder sozialen Szenarien werden einige Bereiche gelockert. Ein Ziel ist keine Bestehensgrenze, sondern der Bereich, den die Literatur mit wirksamer Kommunikation verbindet." },
+            { type: "table", head: ["Messung", "Berechnung", "Zielbereich", "Grundlage"], rows: [
+              ["Blickkontakt (Linsenfokus)", "Anteil der Bilder mit Blick in die Linse, aus Iris- und Kopfausrichtung", "Sitzung 60–80 %; Einzelbild ≥ 75 %", "Argyle &amp; Cook (1976); Doherty-Sneddon &amp; Phelps (2005)"],
+              ["Kopfdrehung und -neigung", "Yaw / Pitch / Roll aus Gesichtspunkten", "Drehung ≤ 12°, Neigung ≤ 8°", "Argyle &amp; Cook (1976); Mehrabian (1971)"],
+              ["Schulterlinie", "Schulterwinkel aus Pose-Punkten", "≤ 5°, offen und symmetrisch", "Carney, Cuddy &amp; Yap (2010); Knapp &amp; Hall (2010)"],
+              ["Lächeln AU12 und Wange AU6", "Blendshape-Koeffizienten (FACS Action Units)", "Zu Beginn/Ende AU12 ≥ 30 % und AU6 ≥ 20 % (Duchenne)", "Ekman &amp; Friesen (1978); Ekman, Davidson &amp; Friesen (1990)"],
+              ["Gesichtsberührung", "Schnitt der Handpunkte mit Gesichtszonen (Kinn, Hals, Nase…)", "0 (Signal beruhigender Gesten)", "Navarro (2008)"],
+              ["Sichtbarkeit und Höhe der Hände", "Handpunkte + Position im Bild", "Sichtbar, Brusthöhe", "Kendon (2004); McNeill (1992)"],
+              ["Sprechtempo", "Wörter pro Minute und Schwankung (CV) aus dem Transkript", "130–160 Wörter/Min.", "Rodero (2012)"],
+              ["Pausen und Füllwörter", "Stillephasen; Erkennung von Fülllauten", "1–2 s stille Pausen; so wenige Füller wie möglich", "Goldman-Eisler (1968)"],
+              ["Tonhöhenumfang und Monotonie", "F0-Verlauf, Umfang in Halbtönen", "Großer Umfang, niedriger Monotoniewert", "Scherer (2003)"],
+              ["Lautstärke", "RMS dBFS → Skala 0–100, Schwankung ±dB", "Stabiler Pegel, geringe Schwankung", "Rodero (2012)"],
+              ["STAR-Struktur", "Situation / Aufgabe / Handlung / Ergebnis im Transkript", "Alle vier Elemente", "Strukturierte Interviewpraxis"]
+            ] }
+          ] },
+        { kicker: "Karten", h: "Wie eine Entwicklungskarte entsteht",
+          blocks: [
+            { type: "p", text: "Jede Karte hat vier Zeilen: <strong>Messung</strong> (der echte Wert aus der Aufnahme), <strong>Chance</strong> (wie dieser Wert in der Kommunikation gelesen wird), <strong>Handlung</strong> (ein konkreter Schritt für die nächste Probe) und <strong>Referenz</strong>. Konnte etwas nicht gemessen werden, entsteht auch keine Karte." },
+            { type: "cards", cols: 3, items: [
+              { h: "Stärke", p: "Der Wert liegt im Zielbereich. Das Verhalten, das es zu bewahren gilt, wird mit seinem Messwert gezeigt.", metric: "grün" },
+              { h: "Entwicklungsfenster", p: "Außerhalb des Bereichs, aber mit begrenzter Wirkung. Eine Lücke, die eine kleine Anpassung schließt.", metric: "amber" },
+              { h: "Prioritäre Chance", p: "Der einzelne Punkt mit der größten Wirkung. Er steht oben im Bericht; auch der gesprochene Coach beginnt dort.", metric: "rot" }
+            ] }
+          ] },
+        { kicker: "Schlüsselbilder", h: "Drei Momente aus dem Video",
+          blocks: [
+            { type: "p", text: "Nach der Aufnahme durchsucht der Algorithmus die Messwerte pro Bild und wählt drei Momente; jede Erklärungskarte entsteht ausschließlich aus Werten, die in genau diesem Bild gemessen wurden:" },
+            { type: "ul", items: [
+              "<strong>Bester Blickkontakt:</strong> das Bild mit höchstem Linsenfokus und geringster Kopfdrehung. Es zeigt, was Sie wiederholen sollten.",
+              "<strong>Kritische Abweichung:</strong> das Bild, in dem der Blick abriss, das Gesicht berührt wurde oder der Kopf am stärksten gedreht war. Wo, wann und wie viel wird konkret.",
+              "<strong>Wärmster Ausdruck + Haltung und Kleidung:</strong> das Bild mit höchstem AU6+AU12; Schulterlinie, Handposition und Passung zur Szenariopalette werden hier bewertet."
+            ] }
+          ] },
+        { kicker: "Literatur", h: "Die Arbeiten, auf die wir uns stützen", blocks: [ { type: "refs", items: REFS } ] },
+        { kicker: "Grenzen", h: "Was wir nicht behaupten",
+          blocks: [
+            { type: "ul", items: [
+              "Die Schätzung erfolgt 2-D aus einer einzelnen Kamera; Tiefe und Licht können Winkelmessungen um einige Grad verschieben.",
+              "Blendshape-Koeffizienten messen Muskelaktivierung, keine Emotion; provapp schreibt keine Gefühle oder Absichten zu.",
+              "Zielbereiche stammen aus der westlichen Literatur zur Geschäftskommunikation; Normen für Blickkontakt und Gestik variieren zwischen Kulturen.",
+              "Haltungsbefunde werden als Signale für Offenheit und Lesbarkeit interpretiert; es gibt keine hormonellen oder persönlichkeitsbezogenen Aussagen.",
+              "provapp ist ein Trainings- und Probenwerkzeug; es darf nicht allein für klinische, rechtliche oder Einstellungsentscheidungen verwendet werden."
+            ] }
+          ] }
+      ]
+    },
+
+    fr: {
+      kicker: "Science &amp; méthodologie",
+      title: "Des scores qui ne doivent rien au hasard : comment provapp mesure",
+      lead: "Chaque chiffre de votre rapport est dérivé image par image et seconde par seconde de votre enregistrement ; chaque plage cible provient de la littérature en sciences du comportement. Cette page détaille la chaîne de mesure, les seuils et nos limites.",
+      sections: [
+        { kicker: "Chaîne de mesure", h: "Cinq étapes de l'enregistrement à la carte",
+          blocks: [
+            { type: "ol", items: [
+              "<strong>Enregistrement dans le navigateur.</strong> Caméra et micro s'ouvrent sur votre appareil, uniquement avec votre autorisation. L'enregistrement est transmis en connexion chiffrée (HTTPS) pour analyse.",
+              "<strong>Analyse visuelle.</strong> MediaPipe Tasks (Face, Hand et Pose Landmarker) extrait par image 478 points du visage, 52 coefficients musculaires (blendshapes), 21 points des mains et 33 points du corps. Direction du regard, angles de la tête, ligne d'épaules, position des mains et contacts avec le visage en sont calculés.",
+              "<strong>Analyse audio.</strong> Contour de la fréquence fondamentale (F0), énergie (dBFS), segments de silence et sons de remplissage sont mesurés sur l'onde ; un modèle local de reconnaissance vocale ajoute la transcription, le débit en mots/min et les indices de structure STAR.",
+              "<strong>Coach à base de règles.</strong> Chaque mesure est comparée à une plage cible propre au contexte (entretien, présentation, réunion en ligne) et devient une carte : mesure, opportunité, action, référence.",
+              "<strong>Suppression.</strong> Une fois l'analyse terminée, vidéo et audio sont supprimés ; seuls des résumés numériques sont écrits dans l'historique."
+            ] }
+          ] },
+        { kicker: "Canaux et seuils", h: "Ce qui est mesuré, quelle plage est visée",
+          blocks: [
+            { type: "p", text: "Les cibles ci-dessous sont calibrées pour des contextes professionnels de vidéo et de présentation ; certaines plages sont assouplies dans les scénarios romantiques ou sociaux. Une cible n'est pas une note de passage mais la plage que la littérature associe à une communication efficace." },
+            { type: "table", head: ["Mesure", "Calcul", "Plage cible", "Fondement"], rows: [
+              ["Contact visuel (focalisation objectif)", "Part des images où le regard est dans l'objectif, d'après l'iris et l'orientation de la tête", "Séance 60–80 % ; image seule ≥ 75 %", "Argyle &amp; Cook (1976) ; Doherty-Sneddon &amp; Phelps (2005)"],
+              ["Rotation et inclinaison de la tête", "Yaw / pitch / roll à partir des points du visage", "Rotation ≤ 12°, inclinaison ≤ 8°", "Argyle &amp; Cook (1976) ; Mehrabian (1971)"],
+              ["Ligne d'épaules", "Angle des épaules à partir des points de pose", "≤ 5°, ouverte et symétrique", "Carney, Cuddy &amp; Yap (2010) ; Knapp &amp; Hall (2010)"],
+              ["Sourire AU12 et joue AU6", "Coefficients blendshape (unités d'action FACS)", "En ouverture/clôture AU12 ≥ 30 % et AU6 ≥ 20 % (Duchenne)", "Ekman &amp; Friesen (1978) ; Ekman, Davidson &amp; Friesen (1990)"],
+              ["Contact main-visage", "Intersection des points des mains avec les zones du visage (menton, cou, nez…)", "0 (signal de geste d'apaisement)", "Navarro (2008)"],
+              ["Visibilité et hauteur des mains", "Points des mains + position dans le cadre", "Visibles, à hauteur de poitrine", "Kendon (2004) ; McNeill (1992)"],
+              ["Débit de parole", "Mots par minute et variation (CV) d'après la transcription", "130–160 mots/min", "Rodero (2012)"],
+              ["Pauses et remplissages", "Segments de silence ; détection des sons de remplissage", "Pauses silencieuses de 1–2 s ; le moins de remplissages possible", "Goldman-Eisler (1968)"],
+              ["Étendue de hauteur et monotonie", "Contour F0, étendue en demi-tons", "Étendue large, faible score de monotonie", "Scherer (2003)"],
+              ["Niveau sonore", "RMS dBFS → échelle 0–100, variation ±dB", "Niveau stable, faible variation", "Rodero (2012)"],
+              ["Structure STAR", "Indices Situation / Tâche / Action / Résultat dans la transcription", "Les quatre éléments", "Pratique de l'entretien structuré"]
+            ] }
+          ] },
+        { kicker: "Cartes", h: "Comment se forme une carte de progression",
+          blocks: [
+            { type: "p", text: "Chaque carte comporte quatre lignes : <strong>Mesure</strong> (la valeur réelle issue de l'enregistrement), <strong>Opportunité</strong> (comment cette valeur est perçue en communication), <strong>Action</strong> (un pas concret pour la prochaine répétition) et <strong>Référence</strong>. Si une mesure n'a pas pu être faite, la carte n'est pas générée." },
+            { type: "cards", cols: 3, items: [
+              { h: "Point fort", p: "La valeur est dans la plage cible. Le comportement à conserver est affiché avec sa mesure.", metric: "vert" },
+              { h: "Fenêtre d'opportunité", p: "Hors plage mais à impact limité. Un écart qu'un petit ajustement peut combler.", metric: "ambre" },
+              { h: "Opportunité prioritaire", p: "L'élément unique au plus fort impact. Il ouvre le rapport et le commentaire vocal du coach commence par lui.", metric: "rouge" }
+            ] }
+          ] },
+        { kicker: "Images clés", h: "Trois instants choisis dans la vidéo",
+          blocks: [
+            { type: "p", text: "Après l'enregistrement, l'algorithme parcourt les mesures image par image et sélectionne trois instants ; chaque carte d'explication n'utilise que des valeurs réellement mesurées dans cette image :" },
+            { type: "ul", items: [
+              "<strong>Meilleur contact visuel :</strong> l'image où la focalisation sur l'objectif est la plus élevée et la rotation de tête la plus faible. Elle montre ce qu'il faut reproduire.",
+              "<strong>Écart critique :</strong> l'image où le regard s'est détourné, où le visage a été touché ou où la tête a le plus tourné. Où, quand et combien deviennent concrets.",
+              "<strong>Expression la plus chaleureuse + posture et tenue :</strong> l'image au plus fort AU6+AU12 ; ligne d'épaules, position des mains et accord avec la palette du scénario y sont évalués."
+            ] }
+          ] },
+        { kicker: "Références", h: "Les travaux sur lesquels nous nous appuyons", blocks: [ { type: "refs", items: REFS } ] },
+        { kicker: "Limites", h: "Ce que nous n'affirmons pas",
+          blocks: [
+            { type: "ul", items: [
+              "L'estimation est en 2D à partir d'une seule caméra ; profondeur et éclairage peuvent décaler les angles de quelques degrés.",
+              "Les coefficients blendshape mesurent une activation musculaire, pas une émotion ; provapp n'attribue ni sentiment ni intention.",
+              "Les plages cibles proviennent de la littérature occidentale sur la communication professionnelle ; les normes de regard et de gestuelle varient selon les cultures.",
+              "Les constats posturaux sont lus comme des signaux d'ouverture et de lisibilité ; aucune affirmation hormonale ou de personnalité n'est faite.",
+              "provapp est un outil de formation et de répétition ; il ne doit pas servir seul à une décision clinique, juridique ou de recrutement."
+            ] }
+          ] }
+      ]
+    },
+
+    es: {
+      kicker: "Ciencia y metodología",
+      title: "Las puntuaciones no son aleatorias: así mide provapp",
+      lead: "Cada número de tu informe se deriva fotograma a fotograma y segundo a segundo de tu grabación; cada rango objetivo proviene de la literatura en ciencias del comportamiento. Esta página explica la cadena de medición, los umbrales y nuestros límites.",
+      sections: [
+        { kicker: "Cadena de medición", h: "Cinco pasos de la grabación a la tarjeta",
+          blocks: [
+            { type: "ol", items: [
+              "<strong>Grabación en el navegador.</strong> La cámara y el micrófono se abren en tu propio dispositivo, solo con tu permiso. La grabación se envía por conexión cifrada (HTTPS) para su análisis.",
+              "<strong>Análisis visual.</strong> MediaPipe Tasks (Face, Hand y Pose Landmarker) extrae por fotograma 478 puntos faciales, 52 coeficientes musculares (blendshapes), 21 puntos de las manos y 33 del cuerpo. De ahí se calculan dirección de la mirada, ángulos de la cabeza, línea de hombros, posición de las manos y toques en la cara.",
+              "<strong>Análisis de audio.</strong> Se miden en la onda el contorno de la frecuencia fundamental (F0), la energía (dBFS), los segmentos de silencio y las muletillas; un modelo local de reconocimiento de voz añade transcripción, palabras por minuto y pistas de estructura STAR.",
+              "<strong>Coach basado en reglas.</strong> Cada medición se compara con un rango objetivo propio del contexto (entrevista, presentación, reunión en línea) y se convierte en una tarjeta: medición, oportunidad, acción, referencia.",
+              "<strong>Eliminación.</strong> Al terminar el análisis, el vídeo y el audio se eliminan; al historial solo pasan resúmenes numéricos."
+            ] }
+          ] },
+        { kicker: "Canales y umbrales", h: "Qué se mide y qué rango se persigue",
+          blocks: [
+            { type: "p", text: "Los objetivos siguientes están calibrados para contextos profesionales de vídeo y presentación; en escenarios románticos o sociales algunos rangos se relajan. Un objetivo no es una nota de aprobado, sino el rango que la literatura asocia con una comunicación eficaz." },
+            { type: "table", head: ["Medición", "Cómo se calcula", "Rango objetivo", "Fundamento"], rows: [
+              ["Contacto visual (foco en la lente)", "Proporción de fotogramas mirando a la lente, a partir del iris y la orientación de la cabeza", "Sesión 60–80 %; fotograma ≥ 75 %", "Argyle &amp; Cook (1976); Doherty-Sneddon &amp; Phelps (2005)"],
+              ["Giro e inclinación de la cabeza", "Yaw / pitch / roll a partir de los puntos faciales", "Giro ≤ 12°, inclinación ≤ 8°", "Argyle &amp; Cook (1976); Mehrabian (1971)"],
+              ["Línea de hombros", "Ángulo de hombros a partir de los puntos de pose", "≤ 5°, abierta y simétrica", "Carney, Cuddy &amp; Yap (2010); Knapp &amp; Hall (2010)"],
+              ["Sonrisa AU12 y mejilla AU6", "Coeficientes blendshape (unidades de acción FACS)", "En apertura/cierre AU12 ≥ 30 % y AU6 ≥ 20 % (Duchenne)", "Ekman &amp; Friesen (1978); Ekman, Davidson &amp; Friesen (1990)"],
+              ["Toque en la cara", "Intersección de los puntos de las manos con zonas faciales (mentón, cuello, nariz…)", "0 (señal de conducta pacificadora)", "Navarro (2008)"],
+              ["Visibilidad y altura de las manos", "Puntos de las manos + posición en el encuadre", "Visibles, a la altura del pecho", "Kendon (2004); McNeill (1992)"],
+              ["Velocidad del habla", "Palabras por minuto y variación (CV) según la transcripción", "130–160 ppm", "Rodero (2012)"],
+              ["Pausas y muletillas", "Segmentos de silencio; detección de muletillas", "Pausas silenciosas de 1–2 s; las menos muletillas posibles", "Goldman-Eisler (1968)"],
+              ["Rango tonal y monotonía", "Contorno F0, rango en semitonos", "Rango amplio, puntuación de monotonía baja", "Scherer (2003)"],
+              ["Volumen", "RMS dBFS → escala 0–100, variación ±dB", "Nivel estable, variación baja", "Rodero (2012)"],
+              ["Estructura STAR", "Pistas de Situación / Tarea / Acción / Resultado en la transcripción", "Los cuatro elementos", "Práctica de entrevista estructurada"]
+            ] }
+          ] },
+        { kicker: "Tarjetas", h: "Cómo se forma una tarjeta de crecimiento",
+          blocks: [
+            { type: "p", text: "Cada tarjeta tiene cuatro líneas: <strong>Medición</strong> (el valor real de la grabación), <strong>Oportunidad</strong> (cómo se lee ese valor en la comunicación), <strong>Acción</strong> (un paso concreto para el próximo ensayo) y <strong>Referencia</strong>. Si una medición no pudo realizarse, la tarjeta no se genera." },
+            { type: "cards", cols: 3, items: [
+              { h: "Fortaleza", p: "El valor está dentro del rango objetivo. El comportamiento que conviene mantener se muestra con su medición.", metric: "verde" },
+              { h: "Ventana de oportunidad", p: "Fuera del rango pero con impacto limitado. Una brecha que un pequeño ajuste puede cerrar.", metric: "ámbar" },
+              { h: "Oportunidad prioritaria", p: "El único elemento de mayor impacto. Encabeza el informe y el comentario hablado del coach comienza por él.", metric: "rojo" }
+            ] }
+          ] },
+        { kicker: "Fotogramas clave", h: "Tres momentos seleccionados del vídeo",
+          blocks: [
+            { type: "p", text: "Tras la grabación, el algoritmo recorre las mediciones por fotograma y selecciona tres momentos; cada tarjeta explicativa se construye solo con valores medidos realmente en ese fotograma:" },
+            { type: "ul", items: [
+              "<strong>Mejor contacto visual:</strong> el fotograma con mayor foco en la lente y menor giro de cabeza. Muestra qué repetir.",
+              "<strong>Desviación crítica:</strong> el fotograma en que la mirada se perdió, se tocó la cara o la cabeza giró más. Concreta dónde, cuándo y cuánto.",
+              "<strong>Expresión más cálida + postura y vestimenta:</strong> el fotograma con mayor AU6+AU12; ahí se evalúan línea de hombros, posición de las manos y ajuste con la paleta del escenario."
+            ] }
+          ] },
+        { kicker: "Referencias", h: "Los trabajos en que nos basamos", blocks: [ { type: "refs", items: REFS } ] },
+        { kicker: "Límites", h: "Lo que no afirmamos",
+          blocks: [
+            { type: "ul", items: [
+              "La estimación es 2D desde una sola cámara; la profundidad y la iluminación pueden desplazar los ángulos unos grados.",
+              "Los coeficientes blendshape miden activación muscular, no emoción; provapp no atribuye sentimientos ni intenciones.",
+              "Los rangos objetivo provienen de la literatura occidental sobre comunicación profesional; las normas de mirada y gesto varían entre culturas.",
+              "Los hallazgos posturales se interpretan como señales de apertura y legibilidad; no se hace ninguna afirmación hormonal ni de personalidad.",
+              "provapp es una herramienta de formación y ensayo; no debe usarse por sí sola para decisiones clínicas, legales o de contratación."
+            ] }
+          ] }
+      ]
+    }
+  };
+  </script>
+  <script src="site.js"></script>
+</body>
+</html>

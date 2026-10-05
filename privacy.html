@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" data-ui="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy · provapp</title>
+  <meta name="description" content="provapp privacy policy: camera and microphone recordings are deleted right after analysis; only numeric summaries are kept. What we store, why, for how long, and your rights.">
+  <meta name="theme-color" content="#6C240A">
+  <link rel="icon" type="image/svg+xml" href="assets/provapp_mark.svg">
+  <link rel="canonical" href="https://provapp.app/privacy.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://provapp.app/privacy.html">
+  <meta property="og:title" content="provapp — Privacy Policy &amp; Data Security">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <header class="wrap" id="site-header"></header>
+  <main class="wrap" id="site-main">
+    <noscript><section class="window"><p>This page needs JavaScript to switch languages. Summary: provapp deletes video and audio immediately after analysis and keeps only numeric summaries. Contact: hello@provapp.app</p></section></noscript>
+  </main>
+  <footer class="wrap" id="site-footer"></footer>
+
+  <script>
+  window.PAGE = {
+    slug: "privacy",
+
+    tr: {
+      kicker: "Gizlilik politikası ve veri güvenliği",
+      title: "Kaydınız analiz edilir, saklanmaz",
+      lead: "provapp kameranızdan ve mikrofonunuzdan gelen kaydı yalnızca analiz için kullanır. Video ve ses, analiz tamamlanır tamamlanmaz sunucudan silinir; geriye yalnızca sayısal özet metrikler kalır.",
+      updated: "Son güncelleme: 5 Ekim 2026 · Veri sorumlusu: PROVA-EFC · hello@provapp.app",
+      sections: [
+        { kicker: "Bir bakışta", h: "Üç temel ilke",
+          blocks: [
+            { type: "cards", cols: 3, items: [
+              { h: "Ham medya saklanmaz", p: "Video ve ses kaydı yalnızca analiz süresince geçici olarak işlenir ve analiz bittiğinde silinir. Sunucuda kayıt arşivi yoktur." },
+              { h: "Yalnızca sayılar kalır", p: "Prova geçmişinize göz teması yüzdesi, kelime/dk gibi sayısal özetler ve kısa koç metinleri yazılır. Tam transkript veya görüntü saklanmaz." },
+              { h: "AB'de barındırma", p: "Uygulama Avrupa Birliği içinde, Hetzner Online GmbH (Almanya) altyapısında çalışır. Tüm trafik HTTPS ile şifrelenir." }
+            ] }
+          ] },
+        { kicker: "Hangi veriler, neden, ne kadar", h: "İşlenen veri kategorileri",
+          blocks: [
+            { type: "table", head: ["Veri", "Amaç", "Saklama süresi"], rows: [
+              ["Hesap bilgileri: kullanıcı adı, ad-soyad, e-posta adresi, parola (tuzlanmış özet; düz metin asla saklanmaz)", "Hesap oluşturma, giriş, e-posta doğrulama, rapor gönderimi", "Hesabınız silinene kadar"],
+              ["E-posta doğrulama kodu (yalnızca özeti saklanır)", "Hesabın size ait olduğunu doğrulama", "Kısa süreli; kullanıldığında veya süresi dolduğunda silinir"],
+              ["Kamera ve mikrofon kaydı", "Bakış, yüz, duruş, ses ve içerik analizi", "Analiz süresince (dakikalar); tamamlandığında silinir"],
+              ["Prova özeti: sayısal metrikler, senaryo bilgisi, kısa koç metni ve gelişim kartı satırları (birkaç kelimelik alıntılar içerebilir)", "Gelişim zaman çizelgesi, trend grafikleri, PDF rapor", "Hesabınız silinene kadar veya talebiniz üzerine"],
+              ["Geri bildirim formu: puan, metin, kullanıcı adı, e-posta", "Beta sürecinde ürünü geliştirme", "Kapalı beta süresince"],
+              ["Dil tercihi (tarayıcınızda localStorage)", "Arayüz dilini hatırlama", "Cihazınızda; tarayıcı verilerini silince kalkar"],
+              ["Teknik erişim günlükleri: IP adresi, zaman, istek yolu", "Güvenlik, kötüye kullanımı önleme, hata ayıklama", "Sınırlı süre; düzenli olarak temizlenir"]
+            ] },
+            { type: "p", text: "<strong>Saklamadıklarımız:</strong> ham video veya ses dosyası, tam konuşma transkripti, anahtar kare görüntüleri (yalnızca oturum sırasında ekranda gösterilir), konum verisi, reklam veya analitik çerezleri. Streamlit kullanım istatistikleri de kapalıdır." }
+          ] },
+        { kicker: "Rapor ve e-posta", h: "PDF raporu siz talep edince oluşur",
+          blocks: [
+            { type: "p", text: "Oturum sonunda raporu PDF olarak indirebilir veya kendi e-posta adresinize gönderebilirsiniz. PDF, o oturuma ait anahtar kare görüntülerini içerir; bu dosya yalnızca sizin isteğinizle oluşturulur ve sunucuda kopyası tutulmaz. E-posta gönderimi için üçüncü taraf bir e-posta sağlayıcısı (SMTP) kullanılır; bu sağlayıcı AB dışında olabilir ve iletiyi kendi hizmet koşulları çerçevesinde işler." },
+            { type: "p", text: "Hesap doğrulama kodları ve beta geri bildirimleri de aynı e-posta altyapısıyla iletilir." }
+          ] },
+        { kicker: "Yapay zekâ", h: "Koç yorumları kural tabanlıdır",
+          blocks: [
+            { type: "p", text: "Raporunuzdaki koç metni ve gelişim kartları, ölçülen değerlerin hedef aralıklarla karşılaştırılmasından türetilen kural tabanlı çıktılardır. Beta sürümünde verileriniz herhangi bir üretken yapay zekâ sağlayıcısına gönderilmez. İleride isteğe bağlı bir üretken koç sunulursa, bu yalnızca açık onayınızla ve yalnızca sayısal özet metni paylaşılarak çalışacaktır; görüntü veya ses hiçbir koşulda paylaşılmaz." }
+          ] },
+        { kicker: "Güvenlik", h: "Teknik ve idari önlemler",
+          blocks: [
+            { type: "ul", items: [
+              "Tüm bağlantılar TLS (HTTPS) ile şifrelenir; tarayıcı, kamera ve mikrofonu yalnızca güvenli bağlantıda açar.",
+              "Parolalar tuzlanmış kriptografik özet olarak saklanır; sistem yöneticileri bile parolanızı göremez.",
+              "Kayıtlar kullanıcıya özel geçici bir çalışma alanında işlenir ve analiz bittiğinde silinir.",
+              "Sunucuya erişim anahtar tabanlı SSH ile sınırlıdır; uygulama ayrıcalıksız bir kullanıcıyla konteyner içinde çalışır.",
+              "Veri ihlali şüphesinde etkilenen kullanıcılar ve yetkili makamlar yasal süreler içinde bilgilendirilir."
+            ] }
+          ] },
+        { kicker: "Haklarınız", h: "Verileriniz üzerinde kontrol",
+          blocks: [
+            { type: "p", text: "GDPR ve KVKK kapsamında şu haklara sahipsiniz: verilerinize erişim, düzeltme, silme (unutulma), işlemeyi kısıtlama, taşınabilirlik ve itiraz. Hesabınızın ve tüm prova geçmişinizin silinmesini <a href=\"mailto:hello@provapp.app?subject=provapp%20Veri%20Talebi\">hello@provapp.app</a> adresine yazarak talep edebilirsiniz; talepler 30 gün içinde yanıtlanır." },
+            { type: "p", text: "Hesap oluştururken verdiğiniz onay, kamera ve mikrofon kaydının yukarıda açıklanan şekilde işlenmesine ilişkindir. Bu onayı dilediğiniz zaman hesabınızı silerek geri alabilirsiniz." }
+          ] },
+        { kicker: "Diğer hususlar", h: "Çocuklar, değişiklikler, iletişim",
+          blocks: [
+            { type: "ul", items: [
+              "provapp 16 yaş ve üzeri kullanıcılar için tasarlanmıştır; daha küçük yaştaki kişilerden bilerek veri toplamayız.",
+              "Bu politikayı güncellediğimizde tarih bu sayfada değişir; önemli değişiklikler kayıtlı e-posta adresinize bildirilir.",
+              "Sorular ve talepler için: <a href=\"mailto:hello@provapp.app\">hello@provapp.app</a>"
+            ] },
+            { type: "note", text: "provapp bir eğitim ve prova aracıdır; klinik, hukuki veya işe alım kararı için tek başına kullanılmamalıdır. Bkz. <a href=\"terms.html\">Kullanım Şartları</a>." }
+          ] }
+      ]
+    },
+
+    en: {
+      kicker: "Privacy policy &amp; data security",
+      title: "Your recording is analysed, not stored",
+      lead: "provapp uses the recording from your camera and microphone for analysis only. Video and audio are deleted from the server as soon as the analysis is complete; only numeric summary metrics remain.",
+      updated: "Last updated: 5 October 2026 · Data controller: PROVA-EFC · hello@provapp.app",
+      sections: [
+        { kicker: "At a glance", h: "Three core principles",
+          blocks: [
+            { type: "cards", cols: 3, items: [
+              { h: "No raw media retained", p: "Video and audio are processed temporarily for the duration of the analysis and deleted when it finishes. There is no recording archive on the server." },
+              { h: "Only numbers remain", p: "Your rehearsal history holds numeric summaries such as eye-contact percentage and words per minute, plus short coach text. No full transcript or imagery is stored." },
+              { h: "Hosted in the EU", p: "The application runs inside the European Union on Hetzner Online GmbH (Germany) infrastructure. All traffic is encrypted with HTTPS." }
+            ] }
+          ] },
+        { kicker: "What, why, how long", h: "Categories of data we process",
+          blocks: [
+            { type: "table", head: ["Data", "Purpose", "Retention"], rows: [
+              ["Account details: username, first and last name, email address, password (salted hash; plain text is never stored)", "Account creation, sign-in, email verification, report delivery", "Until you delete your account"],
+              ["Email verification code (only its hash is stored)", "Confirming that the account belongs to you", "Short-lived; deleted when used or expired"],
+              ["Camera and microphone recording", "Gaze, face, posture, voice and content analysis", "During analysis (minutes); deleted on completion"],
+              ["Rehearsal summary: numeric metrics, scenario, short coach text and growth-card lines (may include a few quoted words)", "Progress timeline, trend charts, PDF report", "Until you delete your account or on request"],
+              ["Feedback form: score, text, username, email", "Improving the product during the beta", "For the duration of the private beta"],
+              ["Language preference (localStorage in your browser)", "Remembering the interface language", "On your device; cleared with browser data"],
+              ["Technical access logs: IP address, time, request path", "Security, abuse prevention, debugging", "Limited period; rotated regularly"]
+            ] },
+            { type: "p", text: "<strong>What we do not store:</strong> raw video or audio files, the full speech transcript, key-frame images (shown on screen during the session only), location data, advertising or analytics cookies. Streamlit usage statistics are disabled." }
+          ] },
+        { kicker: "Report and email", h: "The PDF report is created only on your request",
+          blocks: [
+            { type: "p", text: "At the end of a session you can download the report as a PDF or send it to your own email address. The PDF contains the key-frame images of that session; the file is generated only on your request and no copy is kept on the server. Email delivery uses a third-party email provider (SMTP), which may be located outside the EU and processes the message under its own terms." },
+            { type: "p", text: "Account verification codes and beta feedback are relayed through the same email infrastructure." }
+          ] },
+        { kicker: "Artificial intelligence", h: "Coach commentary is rule-based",
+          blocks: [
+            { type: "p", text: "The coach text and growth cards in your report are rule-based outputs derived from comparing measured values with target ranges. In the beta, your data is not sent to any generative-AI provider. If an optional generative coach is offered in the future, it will run only with your explicit consent and only on a numeric summary text; images and audio will never be shared." }
+          ] },
+        { kicker: "Security", h: "Technical and organisational measures",
+          blocks: [
+            { type: "ul", items: [
+              "All connections are encrypted with TLS (HTTPS); browsers only open the camera and microphone over a secure connection.",
+              "Passwords are stored as salted cryptographic hashes; not even administrators can see your password.",
+              "Recordings are processed in a per-user temporary workspace that is deleted when the analysis ends.",
+              "Server access is limited to key-based SSH; the application runs as an unprivileged user inside a container.",
+              "In the event of a suspected data breach, affected users and authorities are notified within the legal deadlines."
+            ] }
+          ] },
+        { kicker: "Your rights", h: "Control over your data",
+          blocks: [
+            { type: "p", text: "Under the GDPR you have the right to access, rectify and erase your data, to restrict processing, to data portability and to object. You can request deletion of your account and your entire rehearsal history by writing to <a href=\"mailto:hello@provapp.app?subject=provapp%20Data%20Request\">hello@provapp.app</a>; requests are answered within 30 days." },
+            { type: "p", text: "The consent you give when creating an account covers the processing of camera and microphone recordings as described above. You can withdraw it at any time by deleting your account." }
+          ] },
+        { kicker: "Other matters", h: "Children, changes, contact",
+          blocks: [
+            { type: "ul", items: [
+              "provapp is designed for users aged 16 and over; we do not knowingly collect data from younger people.",
+              "When we update this policy the date on this page changes; material changes are announced to your registered email address.",
+              "Questions and requests: <a href=\"mailto:hello@provapp.app\">hello@provapp.app</a>"
+            ] },
+            { type: "note", text: "provapp is a training and rehearsal tool; it must not be used alone for clinical, legal or hiring decisions. See the <a href=\"terms.html\">Terms of Use</a>." }
+          ] }
+      ]
+    },
+
+    de: {
+      kicker: "Datenschutz &amp; Datensicherheit",
+      title: "Ihre Aufnahme wird analysiert, nicht gespeichert",
+      lead: "provapp verwendet die Aufnahme Ihrer Kamera und Ihres Mikrofons ausschließlich zur Analyse. Video und Audio werden sofort nach Abschluss der Analyse vom Server gelöscht; es bleiben nur numerische Zusammenfassungen.",
+      updated: "Zuletzt aktualisiert: 5. Oktober 2026 · Verantwortlicher: PROVA-EFC · hello@provapp.app",
+      sections: [
+        { kicker: "Auf einen Blick", h: "Drei Grundprinzipien",
+          blocks: [
+            { type: "cards", cols: 3, items: [
+              { h: "Keine Rohmedien gespeichert", p: "Video und Audio werden nur für die Dauer der Analyse vorübergehend verarbeitet und danach gelöscht. Es gibt kein Aufnahmearchiv auf dem Server." },
+              { h: "Nur Zahlen bleiben", p: "In Ihrer Probenhistorie stehen numerische Zusammenfassungen wie Blickkontakt-Anteil oder Wörter pro Minute sowie kurze Coach-Texte. Kein vollständiges Transkript, keine Bilder." },
+              { h: "Hosting in der EU", p: "Die Anwendung läuft innerhalb der Europäischen Union auf Infrastruktur der Hetzner Online GmbH (Deutschland). Der gesamte Datenverkehr ist per HTTPS verschlüsselt." }
+            ] }
+          ] },
+        { kicker: "Was, warum, wie lange", h: "Verarbeitete Datenkategorien",
+          blocks: [
+            { type: "table", head: ["Daten", "Zweck", "Speicherdauer"], rows: [
+              ["Kontodaten: Benutzername, Vor- und Nachname, E-Mail-Adresse, Passwort (gesalzener Hash; niemals im Klartext)", "Kontoerstellung, Anmeldung, E-Mail-Bestätigung, Berichtversand", "Bis zur Löschung Ihres Kontos"],
+              ["E-Mail-Bestätigungscode (nur als Hash gespeichert)", "Nachweis, dass das Konto Ihnen gehört", "Kurzlebig; gelöscht nach Verwendung oder Ablauf"],
+              ["Kamera- und Mikrofonaufnahme", "Analyse von Blick, Gesicht, Haltung, Stimme und Inhalt", "Während der Analyse (Minuten); danach gelöscht"],
+              ["Probenzusammenfassung: numerische Metriken, Szenario, kurzer Coach-Text und Zeilen der Entwicklungskarten (können einzelne zitierte Wörter enthalten)", "Entwicklungsverlauf, Trenddiagramme, PDF-Bericht", "Bis zur Kontolöschung oder auf Anfrage"],
+              ["Feedback-Formular: Bewertung, Text, Benutzername, E-Mail", "Produktverbesserung während der Beta", "Für die Dauer der geschlossenen Beta"],
+              ["Spracheinstellung (localStorage im Browser)", "Merken der Oberflächensprache", "Auf Ihrem Gerät; mit Browserdaten gelöscht"],
+              ["Technische Zugriffsprotokolle: IP-Adresse, Zeit, Anfragepfad", "Sicherheit, Missbrauchsprävention, Fehlersuche", "Begrenzter Zeitraum; regelmäßig rotiert"]
+            ] },
+            { type: "p", text: "<strong>Was wir nicht speichern:</strong> Video- oder Audiodateien, das vollständige Transkript, Schlüsselbilder (nur während der Sitzung am Bildschirm), Standortdaten, Werbe- oder Analyse-Cookies. Streamlit-Nutzungsstatistiken sind deaktiviert." }
+          ] },
+        { kicker: "Bericht und E-Mail", h: "Der PDF-Bericht entsteht nur auf Ihren Wunsch",
+          blocks: [
+            { type: "p", text: "Am Ende einer Sitzung können Sie den Bericht als PDF herunterladen oder an Ihre eigene E-Mail-Adresse senden. Das PDF enthält die Schlüsselbilder dieser Sitzung; die Datei wird nur auf Ihre Anforderung erzeugt, eine Kopie verbleibt nicht auf dem Server. Für den Versand wird ein externer E-Mail-Anbieter (SMTP) genutzt, der sich außerhalb der EU befinden kann und die Nachricht nach eigenen Bedingungen verarbeitet." },
+            { type: "p", text: "Bestätigungscodes und Beta-Feedback laufen über dieselbe E-Mail-Infrastruktur." }
+          ] },
+        { kicker: "Künstliche Intelligenz", h: "Coach-Kommentare sind regelbasiert",
+          blocks: [
+            { type: "p", text: "Coach-Text und Entwicklungskarten in Ihrem Bericht sind regelbasierte Ausgaben aus dem Vergleich von Messwerten mit Zielbereichen. In der Beta werden Ihre Daten an keinen Anbieter generativer KI gesendet. Sollte künftig ein optionaler generativer Coach angeboten werden, läuft er nur mit Ihrer ausdrücklichen Zustimmung und ausschließlich auf einer numerischen Zusammenfassung; Bilder und Audio werden niemals weitergegeben." }
+          ] },
+        { kicker: "Sicherheit", h: "Technische und organisatorische Maßnahmen",
+          blocks: [
+            { type: "ul", items: [
+              "Alle Verbindungen sind per TLS (HTTPS) verschlüsselt; Browser öffnen Kamera und Mikrofon nur über eine sichere Verbindung.",
+              "Passwörter werden als gesalzene kryptografische Hashes gespeichert; auch Administratoren können Ihr Passwort nicht sehen.",
+              "Aufnahmen werden in einem benutzerspezifischen temporären Arbeitsbereich verarbeitet, der nach der Analyse gelöscht wird.",
+              "Der Serverzugriff ist auf schlüsselbasiertes SSH beschränkt; die Anwendung läuft als unprivilegierter Benutzer in einem Container.",
+              "Bei Verdacht auf eine Datenschutzverletzung werden Betroffene und Behörden innerhalb der gesetzlichen Fristen informiert."
+            ] }
+          ] },
+        { kicker: "Ihre Rechte", h: "Kontrolle über Ihre Daten",
+          blocks: [
+            { type: "p", text: "Nach der DSGVO haben Sie das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Die Löschung Ihres Kontos und Ihrer gesamten Probenhistorie können Sie per E-Mail an <a href=\"mailto:hello@provapp.app?subject=provapp%20Datenanfrage\">hello@provapp.app</a> beantragen; Anfragen werden innerhalb von 30 Tagen beantwortet." },
+            { type: "p", text: "Die bei der Kontoerstellung erteilte Einwilligung bezieht sich auf die oben beschriebene Verarbeitung von Kamera- und Mikrofonaufnahmen. Sie können sie jederzeit durch Löschen Ihres Kontos widerrufen." }
+          ] },
+        { kicker: "Sonstiges", h: "Kinder, Änderungen, Kontakt",
+          blocks: [
+            { type: "ul", items: [
+              "provapp richtet sich an Nutzer ab 16 Jahren; von jüngeren Personen erheben wir wissentlich keine Daten.",
+              "Bei Aktualisierungen dieser Richtlinie ändert sich das Datum auf dieser Seite; wesentliche Änderungen werden an Ihre registrierte E-Mail-Adresse gemeldet.",
+              "Fragen und Anfragen: <a href=\"mailto:hello@provapp.app\">hello@provapp.app</a>"
+            ] },
+            { type: "note", text: "provapp ist ein Trainings- und Probenwerkzeug; es darf nicht allein für klinische, rechtliche oder Einstellungsentscheidungen verwendet werden. Siehe <a href=\"terms.html\">Nutzungsbedingungen</a>." }
+          ] }
+      ]
+    },
+
+    fr: {
+      kicker: "Politique de confidentialité et sécurité des données",
+      title: "Votre enregistrement est analysé, pas conservé",
+      lead: "provapp utilise l'enregistrement de votre caméra et de votre micro uniquement pour l'analyse. Vidéo et audio sont supprimés du serveur dès la fin de l'analyse ; seuls des indicateurs numériques résumés subsistent.",
+      updated: "Dernière mise à jour : 5 octobre 2026 · Responsable du traitement : PROVA-EFC · hello@provapp.app",
+      sections: [
+        { kicker: "En un coup d'œil", h: "Trois principes fondamentaux",
+          blocks: [
+            { type: "cards", cols: 3, items: [
+              { h: "Aucun média brut conservé", p: "Vidéo et audio sont traités temporairement pendant l'analyse puis supprimés. Il n'existe aucune archive d'enregistrements sur le serveur." },
+              { h: "Seuls les chiffres restent", p: "Votre historique contient des résumés numériques (taux de contact visuel, mots par minute…) et de courts textes du coach. Aucune transcription complète ni image n'est conservée." },
+              { h: "Hébergement dans l'UE", p: "L'application fonctionne au sein de l'Union européenne sur l'infrastructure de Hetzner Online GmbH (Allemagne). Tout le trafic est chiffré en HTTPS." }
+            ] }
+          ] },
+        { kicker: "Quoi, pourquoi, combien de temps", h: "Catégories de données traitées",
+          blocks: [
+            { type: "table", head: ["Données", "Finalité", "Durée de conservation"], rows: [
+              ["Données de compte : identifiant, nom et prénom, adresse e-mail, mot de passe (hachage salé ; jamais en clair)", "Création du compte, connexion, vérification de l'e-mail, envoi du rapport", "Jusqu'à la suppression de votre compte"],
+              ["Code de vérification e-mail (seul le hachage est conservé)", "Confirmer que le compte vous appartient", "Courte durée ; supprimé après usage ou expiration"],
+              ["Enregistrement caméra et micro", "Analyse du regard, du visage, de la posture, de la voix et du contenu", "Pendant l'analyse (quelques minutes) ; supprimé ensuite"],
+              ["Résumé de répétition : métriques numériques, scénario, court texte du coach et lignes des cartes (quelques mots cités possibles)", "Frise de progression, graphiques de tendance, rapport PDF", "Jusqu'à la suppression du compte ou sur demande"],
+              ["Formulaire de retour : note, texte, identifiant, e-mail", "Amélioration du produit pendant la bêta", "Pendant la durée de la bêta privée"],
+              ["Préférence de langue (localStorage du navigateur)", "Mémoriser la langue de l'interface", "Sur votre appareil ; effacée avec les données du navigateur"],
+              ["Journaux techniques d'accès : adresse IP, horodatage, chemin de requête", "Sécurité, prévention des abus, débogage", "Durée limitée ; rotation régulière"]
+            ] },
+            { type: "p", text: "<strong>Ce que nous ne conservons pas :</strong> fichiers vidéo ou audio bruts, transcription complète, images clés (affichées seulement pendant la session), données de localisation, cookies publicitaires ou analytiques. Les statistiques d'usage Streamlit sont désactivées." }
+          ] },
+        { kicker: "Rapport et e-mail", h: "Le rapport PDF n'est créé qu'à votre demande",
+          blocks: [
+            { type: "p", text: "En fin de session, vous pouvez télécharger le rapport en PDF ou l'envoyer à votre propre adresse e-mail. Le PDF contient les images clés de la session ; il est généré uniquement à votre demande et aucune copie n'est gardée sur le serveur. L'envoi passe par un prestataire e-mail tiers (SMTP), qui peut être situé hors de l'UE et traite le message selon ses propres conditions." },
+            { type: "p", text: "Les codes de vérification et les retours de la bêta transitent par la même infrastructure e-mail." }
+          ] },
+        { kicker: "Intelligence artificielle", h: "Les commentaires du coach sont fondés sur des règles",
+          blocks: [
+            { type: "p", text: "Le texte du coach et les cartes de progression sont des sorties à base de règles, issues de la comparaison des valeurs mesurées avec des plages cibles. Pendant la bêta, vos données ne sont transmises à aucun fournisseur d'IA générative. Si un coach génératif optionnel est proposé à l'avenir, il ne fonctionnera qu'avec votre consentement explicite et uniquement sur un résumé numérique ; images et audio ne seront jamais partagés." }
+          ] },
+        { kicker: "Sécurité", h: "Mesures techniques et organisationnelles",
+          blocks: [
+            { type: "ul", items: [
+              "Toutes les connexions sont chiffrées en TLS (HTTPS) ; les navigateurs n'ouvrent caméra et micro qu'en connexion sécurisée.",
+              "Les mots de passe sont stockés sous forme de hachages cryptographiques salés ; même les administrateurs ne peuvent pas les lire.",
+              "Les enregistrements sont traités dans un espace temporaire propre à chaque utilisateur, supprimé à la fin de l'analyse.",
+              "L'accès au serveur est limité au SSH par clé ; l'application tourne sous un utilisateur non privilégié dans un conteneur.",
+              "En cas de suspicion de violation de données, les personnes concernées et les autorités sont informées dans les délais légaux."
+            ] }
+          ] },
+        { kicker: "Vos droits", h: "Le contrôle de vos données",
+          blocks: [
+            { type: "p", text: "Au titre du RGPD, vous disposez des droits d'accès, de rectification, d'effacement, de limitation du traitement, de portabilité et d'opposition. Vous pouvez demander la suppression de votre compte et de tout votre historique en écrivant à <a href=\"mailto:hello@provapp.app?subject=provapp%20Demande%20de%20donn%C3%A9es\">hello@provapp.app</a> ; les demandes sont traitées sous 30 jours." },
+            { type: "p", text: "Le consentement donné à la création du compte porte sur le traitement des enregistrements caméra et micro décrit ci-dessus. Vous pouvez le retirer à tout moment en supprimant votre compte." }
+          ] },
+        { kicker: "Autres points", h: "Mineurs, modifications, contact",
+          blocks: [
+            { type: "ul", items: [
+              "provapp s'adresse aux utilisateurs de 16 ans et plus ; nous ne collectons pas sciemment de données de personnes plus jeunes.",
+              "Lorsque cette politique est mise à jour, la date change sur cette page ; les changements importants sont annoncés à votre adresse e-mail enregistrée.",
+              "Questions et demandes : <a href=\"mailto:hello@provapp.app\">hello@provapp.app</a>"
+            ] },
+            { type: "note", text: "provapp est un outil de formation et de répétition ; il ne doit pas servir seul à une décision clinique, juridique ou de recrutement. Voir les <a href=\"terms.html\">Conditions d'utilisation</a>." }
+          ] }
+      ]
+    },
+
+    es: {
+      kicker: "Política de privacidad y seguridad de datos",
+      title: "Tu grabación se analiza, no se almacena",
+      lead: "provapp utiliza la grabación de tu cámara y micrófono únicamente para el análisis. El vídeo y el audio se eliminan del servidor en cuanto termina el análisis; solo quedan métricas numéricas resumidas.",
+      updated: "Última actualización: 5 de octubre de 2026 · Responsable del tratamiento: PROVA-EFC · hello@provapp.app",
+      sections: [
+        { kicker: "De un vistazo", h: "Tres principios básicos",
+          blocks: [
+            { type: "cards", cols: 3, items: [
+              { h: "No se conservan medios en bruto", p: "El vídeo y el audio se procesan temporalmente durante el análisis y se eliminan al terminar. No existe un archivo de grabaciones en el servidor." },
+              { h: "Solo quedan números", p: "Tu historial guarda resúmenes numéricos como el porcentaje de contacto visual o las palabras por minuto, más textos breves del coach. No se almacena transcripción completa ni imágenes." },
+              { h: "Alojado en la UE", p: "La aplicación funciona dentro de la Unión Europea en infraestructura de Hetzner Online GmbH (Alemania). Todo el tráfico va cifrado por HTTPS." }
+            ] }
+          ] },
+        { kicker: "Qué, por qué, cuánto tiempo", h: "Categorías de datos tratados",
+          blocks: [
+            { type: "table", head: ["Datos", "Finalidad", "Conservación"], rows: [
+              ["Datos de cuenta: nombre de usuario, nombre y apellidos, correo electrónico, contraseña (hash con sal; nunca en texto plano)", "Creación de cuenta, inicio de sesión, verificación de correo, envío de informes", "Hasta que elimines tu cuenta"],
+              ["Código de verificación de correo (solo se guarda su hash)", "Confirmar que la cuenta es tuya", "Corta duración; se elimina al usarse o caducar"],
+              ["Grabación de cámara y micrófono", "Análisis de mirada, rostro, postura, voz y contenido", "Durante el análisis (minutos); se elimina al terminar"],
+              ["Resumen del ensayo: métricas numéricas, escenario, texto breve del coach y líneas de las tarjetas (pueden incluir unas pocas palabras citadas)", "Línea de progreso, gráficos de tendencia, informe PDF", "Hasta que elimines tu cuenta o lo solicites"],
+              ["Formulario de comentarios: puntuación, texto, usuario, correo", "Mejorar el producto durante la beta", "Durante la beta privada"],
+              ["Preferencia de idioma (localStorage del navegador)", "Recordar el idioma de la interfaz", "En tu dispositivo; se borra con los datos del navegador"],
+              ["Registros técnicos de acceso: dirección IP, hora, ruta de la solicitud", "Seguridad, prevención de abusos, depuración", "Periodo limitado; rotación periódica"]
+            ] },
+            { type: "p", text: "<strong>Lo que no almacenamos:</strong> archivos de vídeo o audio en bruto, la transcripción completa, imágenes de fotogramas clave (solo se muestran en pantalla durante la sesión), datos de ubicación, cookies publicitarias o analíticas. Las estadísticas de uso de Streamlit están desactivadas." }
+          ] },
+        { kicker: "Informe y correo", h: "El informe PDF se crea solo a petición tuya",
+          blocks: [
+            { type: "p", text: "Al final de la sesión puedes descargar el informe en PDF o enviarlo a tu propia dirección de correo. El PDF contiene las imágenes clave de esa sesión; se genera solo a petición tuya y no se guarda copia en el servidor. El envío usa un proveedor de correo externo (SMTP), que puede estar fuera de la UE y trata el mensaje según sus propias condiciones." },
+            { type: "p", text: "Los códigos de verificación y los comentarios de la beta se envían por la misma infraestructura de correo." }
+          ] },
+        { kicker: "Inteligencia artificial", h: "Los comentarios del coach se basan en reglas",
+          blocks: [
+            { type: "p", text: "El texto del coach y las tarjetas de crecimiento son salidas basadas en reglas, derivadas de comparar los valores medidos con rangos objetivo. Durante la beta, tus datos no se envían a ningún proveedor de IA generativa. Si en el futuro se ofrece un coach generativo opcional, funcionará solo con tu consentimiento explícito y únicamente sobre un resumen numérico; imágenes y audio nunca se compartirán." }
+          ] },
+        { kicker: "Seguridad", h: "Medidas técnicas y organizativas",
+          blocks: [
+            { type: "ul", items: [
+              "Todas las conexiones van cifradas con TLS (HTTPS); los navegadores solo abren cámara y micrófono en conexiones seguras.",
+              "Las contraseñas se guardan como hashes criptográficos con sal; ni los administradores pueden ver tu contraseña.",
+              "Las grabaciones se procesan en un espacio temporal por usuario que se elimina al terminar el análisis.",
+              "El acceso al servidor se limita a SSH con clave; la aplicación se ejecuta como usuario sin privilegios dentro de un contenedor.",
+              "Ante la sospecha de una brecha de datos, se notifica a los usuarios afectados y a las autoridades dentro de los plazos legales."
+            ] }
+          ] },
+        { kicker: "Tus derechos", h: "Control sobre tus datos",
+          blocks: [
+            { type: "p", text: "Conforme al RGPD tienes derecho de acceso, rectificación, supresión, limitación del tratamiento, portabilidad y oposición. Puedes solicitar la eliminación de tu cuenta y de todo tu historial escribiendo a <a href=\"mailto:hello@provapp.app?subject=provapp%20Solicitud%20de%20datos\">hello@provapp.app</a>; las solicitudes se responden en un plazo de 30 días." },
+            { type: "p", text: "El consentimiento que das al crear la cuenta cubre el tratamiento de las grabaciones de cámara y micrófono descrito arriba. Puedes retirarlo en cualquier momento eliminando tu cuenta." }
+          ] },
+        { kicker: "Otros aspectos", h: "Menores, cambios, contacto",
+          blocks: [
+            { type: "ul", items: [
+              "provapp está diseñado para usuarios de 16 años o más; no recopilamos a sabiendas datos de personas más jóvenes.",
+              "Cuando actualizamos esta política, cambia la fecha de esta página; los cambios relevantes se comunican a tu correo registrado.",
+              "Preguntas y solicitudes: <a href=\"mailto:hello@provapp.app\">hello@provapp.app</a>"
+            ] },
+            { type: "note", text: "provapp es una herramienta de formación y ensayo; no debe usarse por sí sola para decisiones clínicas, legales o de contratación. Consulta los <a href=\"terms.html\">Términos de uso</a>." }
+          ] }
+      ]
+    }
+  };
+  </script>
+  <script src="site.js"></script>
+</body>
+</html>

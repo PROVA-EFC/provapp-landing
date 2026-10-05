@@ -220,8 +220,9 @@
       </a>
       <div class="nav-links">
         <a class="hide-sm" href="#ozellikler"><span data-lang="tr">Özellikler</span><span data-lang="en">Features</span></a>
-        <a class="hide-sm" href="#nasil"><span data-lang="tr">Nasıl çalışır</span><span data-lang="en">How it works</span></a>
-        <a class="hide-sm" href="#gizlilik"><span data-lang="tr">Gizlilik</span><span data-lang="en">Privacy</span></a>
+        <a class="hide-sm" href="about.html"><span data-lang="tr">Hakkımızda</span><span data-lang="en">About</span></a>
+        <a class="hide-sm" href="methodology.html"><span data-lang="tr">Metodoloji</span><span data-lang="en">Methodology</span></a>
+        <a class="hide-sm" href="privacy.html"><span data-lang="tr">Gizlilik</span><span data-lang="en">Privacy</span></a>
         <a href="https://app.provapp.app" rel="noopener"><span data-lang="tr">Beta Uygulaması</span><span data-lang="en">Beta App</span></a>
         <div class="lang" role="group" aria-label="Dil / Language">
           <button type="button" data-set-lang="tr" aria-pressed="true">TR</button>
@@ -446,13 +447,14 @@
         <div class="card">
           <h3><span data-lang="tr">Uyum ve belgeler</span><span data-lang="en">Compliance &amp; documents</span></h3>
           <p>
-            <span data-lang="tr">EU AI Act ve GDPR ilkeleri gözetilerek tasarlandı. Gizlilik politikası, yasal uyarı ve fikri mülkiyet belgeleri erken erişim katılımcılarıyla paylaşılır.</span>
-            <span data-lang="en">Designed with EU AI Act and GDPR principles in mind. The privacy policy, legal disclaimer and IP documents are shared with early-access participants.</span>
+            <span data-lang="tr">EU AI Act ve GDPR ilkeleri gözetilerek tasarlandı. Hangi verinin neden ve ne kadar süre işlendiği, ölçüm yöntemi ve kullanım şartları açık belgeler olarak yayımlanır; beş dilde.</span>
+            <span data-lang="en">Designed with EU AI Act and GDPR principles in mind. What is processed, why and for how long, how we measure, and the terms of use are published as open documents, in five languages.</span>
           </p>
           <p>
-            <a href="mailto:hello@provapp.app?subject=provapp%20Gizlilik%20%2F%20Privacy">
-              <span data-lang="tr">Belgeleri talep et</span><span data-lang="en">Request the documents</span>
-            </a>
+            <a href="privacy.html"><span data-lang="tr">Gizlilik politikası</span><span data-lang="en">Privacy policy</span></a> ·
+            <a href="methodology.html"><span data-lang="tr">Metodoloji</span><span data-lang="en">Methodology</span></a> ·
+            <a href="tips.html"><span data-lang="tr">İpuçları</span><span data-lang="en">Tips</span></a> ·
+            <a href="terms.html"><span data-lang="tr">Kullanım şartları</span><span data-lang="en">Terms of use</span></a>
           </p>
           <p class="ref">
             <span data-lang="tr">provapp bir eğitim ve prova aracıdır; klinik, hukuki veya işe alım kararı için tek başına kullanılmamalıdır.</span>
@@ -470,7 +472,11 @@
         <span data-lang="tr">Tüm hakları saklıdır.</span><span data-lang="en">All rights reserved.</span>
       </div>
       <div>
-        <a href="#gizlilik"><span data-lang="tr">Gizlilik</span><span data-lang="en">Privacy</span></a> ·
+        <a href="about.html"><span data-lang="tr">Hakkımızda</span><span data-lang="en">About</span></a> ·
+        <a href="methodology.html"><span data-lang="tr">Metodoloji</span><span data-lang="en">Methodology</span></a> ·
+        <a href="privacy.html"><span data-lang="tr">Gizlilik</span><span data-lang="en">Privacy</span></a> ·
+        <a href="tips.html"><span data-lang="tr">İpuçları</span><span data-lang="en">Tips</span></a> ·
+        <a href="terms.html"><span data-lang="tr">Kullanım Şartları</span><span data-lang="en">Terms</span></a> ·
         <a href="mailto:hello@provapp.app">hello@provapp.app</a>
       </div>
     </div>
@@ -481,20 +487,23 @@
       var root = document.documentElement;
       var stored = null;
       try { stored = localStorage.getItem('provapp-lang'); } catch (e) {}
+      // Ana sayfa TR/EN; alt sayfalar (about, methodology, …) 5 dil. Orada seçilen de/fr/es tercihi
+      // burada EN olarak gösterilir ama saklanan tercih ezilmez (alt sayfaya dönüşte korunur).
       var initial = stored || ((navigator.language || 'tr').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en');
 
-      function apply(lang) {
-        root.setAttribute('data-ui', lang);
-        root.setAttribute('lang', lang);
+      function apply(lang, persist) {
+        var shown = (lang === 'tr') ? 'tr' : 'en';
+        root.setAttribute('data-ui', shown);
+        root.setAttribute('lang', shown);
         document.querySelectorAll('[data-set-lang]').forEach(function (b) {
-          b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
+          b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === shown));
         });
-        try { localStorage.setItem('provapp-lang', lang); } catch (e) {}
+        if (persist) { try { localStorage.setItem('provapp-lang', shown); } catch (e) {} }
       }
-      apply(initial);
+      apply(initial, !stored);
 
       document.querySelectorAll('[data-set-lang]').forEach(function (b) {
-        b.addEventListener('click', function () { apply(b.getAttribute('data-set-lang')); });
+        b.addEventListener('click', function () { apply(b.getAttribute('data-set-lang'), true); });
       });
       document.getElementById('year').textContent = String(new Date().getFullYear());
     })();
