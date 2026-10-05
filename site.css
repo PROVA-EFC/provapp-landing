@@ -101,6 +101,8 @@ footer { color: var(--white); padding: 10px 0 42px; font-size: 0.84rem; opacity:
 footer .row { display: flex; flex-wrap: wrap; gap: 14px 18px; justify-content: space-between; align-items: center; }
 footer a { color: var(--white); }
 footer .links a { margin-right: 12px; }
+footer .legal { margin: 14px 0 0; font-size: 0.76rem; line-height: 1.55; opacity: 0.78; max-width: 72ch; }
+footer .legal a { text-decoration: underline; }
 
 /* ---------- i18n: hide every data-lang block that is not the active UI language ---------- */
 html[data-ui="tr"] [data-lang]:not([data-lang="tr"]),

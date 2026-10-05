@@ -11,15 +11,20 @@
 
   var NAV = {
     tr: { home: 'Ana sayfa', about: 'Hakkımızda', methodology: 'Metodoloji', privacy: 'Gizlilik', tips: 'İpuçları', terms: 'Kullanım Şartları', app: 'Beta Uygulaması',
-          sub: 'multimodal varlık, ses ve beden dili kalibrasyonu', rights: 'Tüm hakları saklıdır.', navLabel: 'Ana gezinme' },
+          sub: 'multimodal varlık, ses ve beden dili kalibrasyonu', rights: 'Tüm hakları saklıdır.', navLabel: 'Ana gezinme',
+          legal: 'Yazılımın, kaynak kodunun, görsellerin, markanın ve uygulamanın tüm telif ve fikri mülkiyet hakları <a href="about.html">Hakkımızda</a> sayfasında adı geçen kuruculara aittir; izinsiz kopyalanamaz, çoğaltılamaz veya dağıtılamaz.' },
     en: { home: 'Home', about: 'About', methodology: 'Methodology', privacy: 'Privacy', tips: 'Tips', terms: 'Terms', app: 'Beta App',
-          sub: 'multimodal presence, voice & body-language calibration', rights: 'All rights reserved.', navLabel: 'Main navigation' },
+          sub: 'multimodal presence, voice & body-language calibration', rights: 'All rights reserved.', navLabel: 'Main navigation',
+          legal: 'All copyright and intellectual property rights in the software, source code, visuals, brand and application belong to the founders named on the <a href="about.html">About</a> page; they may not be copied, reproduced or distributed without permission.' },
     de: { home: 'Start', about: 'Über uns', methodology: 'Methodik', privacy: 'Datenschutz', tips: 'Tipps', terms: 'Nutzungsbedingungen', app: 'Beta-App',
-          sub: 'multimodale Kalibrierung von Präsenz, Stimme & Körpersprache', rights: 'Alle Rechte vorbehalten.', navLabel: 'Hauptnavigation' },
+          sub: 'multimodale Kalibrierung von Präsenz, Stimme & Körpersprache', rights: 'Alle Rechte vorbehalten.', navLabel: 'Hauptnavigation',
+          legal: 'Sämtliche Urheber- und Schutzrechte an Software, Quellcode, Bildmaterial, Marke und Anwendung liegen bei den auf der Seite <a href="about.html">Über uns</a> genannten Gründern; Kopieren, Vervielfältigen oder Verbreiten ohne Genehmigung ist untersagt.' },
     fr: { home: 'Accueil', about: 'À propos', methodology: 'Méthodologie', privacy: 'Confidentialité', tips: 'Conseils', terms: 'Conditions', app: 'Appli bêta',
-          sub: 'calibration multimodale de la présence, de la voix et du langage corporel', rights: 'Tous droits réservés.', navLabel: 'Navigation principale' },
+          sub: 'calibration multimodale de la présence, de la voix et du langage corporel', rights: 'Tous droits réservés.', navLabel: 'Navigation principale',
+          legal: 'Tous les droits d\'auteur et de propriété intellectuelle sur le logiciel, le code source, les visuels, la marque et l\'application appartiennent aux fondateurs nommés sur la page <a href="about.html">À propos</a> ; toute copie, reproduction ou distribution sans autorisation est interdite.' },
     es: { home: 'Inicio', about: 'Acerca de', methodology: 'Metodología', privacy: 'Privacidad', tips: 'Consejos', terms: 'Términos', app: 'App beta',
-          sub: 'calibración multimodal de presencia, voz y lenguaje corporal', rights: 'Todos los derechos reservados.', navLabel: 'Navegación principal' }
+          sub: 'calibración multimodal de presencia, voz y lenguaje corporal', rights: 'Todos los derechos reservados.', navLabel: 'Navegación principal',
+          legal: 'Todos los derechos de autor y de propiedad intelectual sobre el software, el código fuente, los elementos visuales, la marca y la aplicación pertenecen a los fundadores mencionados en la página <a href="about.html">Acerca de</a>; queda prohibida su copia, reproducción o distribución sin autorización.' }
   };
 
   var PAGES = [
@@ -85,7 +90,8 @@
       '<div class="row">' +
         '<div>© ' + new Date().getFullYear() + ' provapp · PROVA-EFC · ' + t.rights + '</div>' +
         '<div class="links">' + links + '<a href="mailto:hello@provapp.app">hello@provapp.app</a></div>' +
-      '</div>';
+      '</div>' +
+      '<p class="legal">' + t.legal + '</p>';
   }
 
   function renderBlock(b) {
